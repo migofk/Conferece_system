@@ -202,6 +202,15 @@ return [
  'Conferance' =>'المؤتمر',
  'Attendants' =>'الحضور',
  'Rejected Attendants' => 'الحضور المرفوضين',
+ 'Adult Number' =>'عدد البالغين',
+ 'Childern Number' =>'عدد الاطفال',
+ 'Childern Age' =>'اعمار الاطفال',
+ 'Arrival Date' =>'تاريخ الوصول',
+ 'Departure Date' =>'تاريخ المغادرة',
+ 'Flight Details' =>'تفاصيل الرحلة الطياران',
+ 'Package' =>'باقة',
+ 'Double Room'=>'غرفة مزدوجة',
+ 'Single Room'=>'غرفة مفردة',
 ];
 
  ?>

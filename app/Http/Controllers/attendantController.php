@@ -25,8 +25,8 @@ class attendantController extends Controller
     public function index()
     {
 
-      $menuActive = array('menu'=>'c2','submenu' =>'c2-l3');
-      $name=__('general.attendants');
+      $menuActive = array('menu'=>'c2','submenu' =>'c2-l1');
+      $name=__('general.Attendants');
       $rows =  attendant::where('status',1)->get();
       $Users=  User::where('status',1)->get()->sortBy('name');
       $companies=  company::where('status',1)->get()->sortBy('name');

@@ -207,6 +207,16 @@ return [
     'Conferance' =>'Conferance',
     'Attendants' =>'Attendants',
     'Rejected Attendants' => 'Rejected Attendants',
+    'Adult Number' =>'Adult Number',
+    'Childern Number' =>'Childern Number',
+    'Childern Age' =>'Adult Age',
+    'Arrival Date' =>'Arrival Date',
+    'Departure Date' =>'Departure Date',
+    'Flight Details' =>'Flight Details',
+    'Package' =>'Package',
+    'Double Room'=>'Double Room',
+    'Single Room'=>'Single Room',
+
 
 
 

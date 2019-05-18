@@ -52,7 +52,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </script>
     <!-- DataTables -->
 <link rel="stylesheet" href="{{asset('public/assets/adminLTE/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
-
+   <link rel="stylesheet" href="{{asset('public/assets/plugins/datetimepicker/jquery.datetimepicker.min.css')}}">
 
   @yield('meta')
 </head>
@@ -338,7 +338,7 @@ desired effect
   <!-- DataTables -->
   <script src="{{asset('public/assets/adminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
   <script src="{{asset('public/assets/adminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-
+  <script src="{{asset('public/assets/plugins/datetimepicker/jquery.datetimepicker.full.min.js')}}"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
