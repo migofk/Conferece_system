@@ -111,6 +111,30 @@
                   @csrf
                  <input type="hidden" name="added_by" value="{{auth::user()->id}}">
                   <div class="box-body">
+
+                    <!-- row -->
+                    <div class="row">
+                      <div class="col-lg-6" >
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                        <label for="Name">How many invitations do you need? </label>
+
+                        <select required name="invitations" id="invitations" class="form-control">
+                          <option></option>
+
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+
+                        </select>
+                      </div>
+                      <!-- ./input -->
+                     </div>
+                    </div>
+
+                    <!-- /row -->
                     <!-- row //////////////////////// -->
                     <div class="row">
 
@@ -123,7 +147,13 @@
                           <input required  class="form-control"  name="name" id="name" value="{{ old('name') }}" placeholder="">
                         </div>
                         <!-- ./input -->
-
+                        @for ($i=1; $i < 5; $i++)
+                          <div id="name_{{$i}}" class="form-group" style="padding: 0 10px !important;">
+                            <label for="Company">{{__('general.Name')}} {{$i+1}}</label>
+                            <input required  class="form-control"  name="name[]"   placeholder="">
+                          </div>
+                        @endfor
+                       <br><br>
                         <!-- input -->
                         <div class="form-group" style="padding:0 10px !important;">
                           <label for="Name">{{__('general.Country')}}</label>
@@ -204,6 +234,16 @@
                         </div>
                         <!-- ./input -->
 
+                        <!-- ./input -->
+                        @for ($i=1; $i < 5; $i++)
+                          <div id="phone_{{$i}}" class="form-group" style="padding: 0 10px !important;">
+                            <label for="Company">{{__('general.Phone')}} {{$i+1}}</label>
+                            <input required  class="form-control"  name="phone[]"  placeholder="">
+                          </div>
+                        @endfor
+                       <br><br>
+                        <!-- input -->
+
                         <!-- input -->
                         <div class="form-group" style="padding: 0 10px !important;">
                           <label for="event">{{__('general.Arrival Date')}}</label>
@@ -251,6 +291,16 @@
                           <input required class="form-control"  name="email" id="email" value="{{ old('email') }}" placeholder="">
                         </div>
                         <!-- ./input -->
+
+                        <!-- ./input -->
+                        @for ($i=1; $i < 5; $i++)
+                          <div id="email_{{$i}}" class="form-group" style="padding: 0 10px !important;">
+                            <label for="Company">{{__('general.Email')}} {{$i+1}}</label>
+                            <input required  class="form-control"  name="email[]"  placeholder="">
+                          </div>
+                        @endfor
+                       <br><br>
+                        <!-- input -->
 
                         <!-- input -->
                         <div class="form-group" style="padding: 0 10px !important;">
@@ -361,18 +411,38 @@
             'autoWidth'   : false
           });
 
-
-
+      for (var i = 1; i < 5; i++) {
+        $('#name_'+i).val('').hide();
+        $('#phone_'+i).val('').hide();
+        $('#email_'+i).val('').hide();
+      }
 
         });
 
-                  $('#timeStamp,.alertX,.timepicker').datetimepicker({
+        $('#timeStamp,.alertX,.timepicker').datetimepicker({
                        ampm: true, // FOR AM/PM FORMAT
                       format:'Y-m-d H:i:s',
                       validateOnBlur: false,
                    step:15
 
                    } );
+
+        // #invitations
+        $('#invitations').change(function(){
+          var x = $(this).val();
+
+          for (var i = 1; i < 5; i++) {
+            if((i < x) && (x != 1)){
+            $('#name_'+i).val('').show();
+            $('#phone_'+i).val('').show();
+            $('#email_'+i).val('').show();
+          }else{
+            $('#name_'+i).val('').hide();
+            $('#phone_'+i).val('').hide();
+            $('#email_'+i).val('').hide();
+          }
+        }
+        });
 
         $('.editbutton').click(function(){
           var editName= $(this).attr('item');
