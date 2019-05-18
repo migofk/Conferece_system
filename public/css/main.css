@@ -1,0 +1,31 @@
+.linksStyle{
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+.activityStatus{
+  background-color: lightgray;
+  padding: 0px 10px;
+}
+
+.nopadding{
+  padding: 0px;
+}
+
+.padding-5px{
+  padding: 0px 5px;
+}
+.marg-b-10px{
+  margin-bottom: 10px;
+}
+
+.marg-t-10px{
+  margin-top: 10px;
+}
+
+.dotIcon{
+  color:lightgray;
+  font-size: 90%;
+}
