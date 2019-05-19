@@ -172,14 +172,11 @@ class attendantController extends Controller
      */
     public function edit(attendant $attendant)
     {
-      $menuActive = array('menu'=>'c2','submenu' =>'c2-l3');
-      $name=$attendant->attendant;
-      $companies=  company::where('status',1)->get()->sortBy('name');
-      $Users=  User::where('status',1)->get()->sortBy('name');
-      $categories=  category::where('status',1)->get()->sortBy('category');
+       // return $attendant->
+      $menuActive = array('menu'=>'c2','submenu' =>'c2-l1');
+      $name= "Edit Attendants";
+      $attendants=  attendant::where('parent_id',$attendant->id)->get()->sortBy('name');
       $countries =  country::where('status',1)->get()->sortBy('country');
-      $regions =  state::where('status',1)->get()->sortBy('state');
-      $cities =  city::where('status',1)->get()->sortBy('city');
       $status = (object)
      [(object)['id' => 0,  'status' => 'Deactive',],
       (object)['id' => 1,  'status' => 'Active', ],
@@ -189,7 +186,7 @@ class attendantController extends Controller
 
 
 
-      return view("admin.attendant_action",  compact('companies','attendant','status','name','menuActive','Users','countries','regions','cities','categories'));
+      return view("admin.attendant_action",  compact('attendants','attendant','status','name','menuActive','countries'));
     }
 
     /**
@@ -201,6 +198,7 @@ class attendantController extends Controller
      */
     public function update(Request $request, attendant $attendant)
     {
+      return 'wlw';
       $data = $request->except('_token','_method','featureImage');
       $request->start_at = Carbon::parse($request->start_at)->format('Y-m-d H:i:s');
       $request->end_at = Carbon::parse($request->end_at)->format('Y-m-d H:i:s');

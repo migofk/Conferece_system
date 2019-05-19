@@ -55,7 +55,13 @@
                   <td>{{$row->status}}</td>
                   <td>{{$row->created_at}}</td>
                   <td>
-                    <a type="link" href="{{url('/adminLink/companies/'.$row->id.'/edit')}}"  class="btn btn-xs btn-success btn-xs" >{{__('general.View')}}</a>
+                      @php
+                      $viewddd = $row->id;
+                       if($row->parent_id != null){
+                        $viewddd = $row->parent_id;
+                       }
+                      @endphp
+                    <a type="link" href="{{url('/adminLink/attendants/'. $viewddd.'/edit')}}"  class="btn btn-xs btn-success btn-xs" >{{__('general.View')}}</a>
 
                   </td>
                 </tr>
@@ -394,10 +400,10 @@
             'autoWidth'   : false
           });
 
-      for (var i = 1; i < 5; i++) {
-        $('#name_'+i).val('').hide();
-        $('#phone_'+i).val('').hide();
-        $('#email_'+i).val('').hide();
+          for (var i = 1; i < 5; i++) {
+        $('#name_'+i).hide().find('input').val('');
+        $('#phone_'+i).hide().find('input').val('');
+        $('#email_'+i).hide().find('input').val('');
       }
 
         });
@@ -416,13 +422,13 @@
 
           for (var i = 1; i < 5; i++) {
             if((i < x) && (x != 1)){
-            $('#name_'+i).val('').show();
-            $('#phone_'+i).val('').show();
-            $('#email_'+i).val('').show();
+            $('#name_'+i).show().find('input').val('');
+            $('#phone_'+i).show().find('input').val('');
+            $('#email_'+i).show().find('input').val('');
           }else{
-            $('#name_'+i).val('').hide();
-            $('#phone_'+i).val('').hide();
-            $('#email_'+i).val('').hide();
+            $('#name_'+i).hide().find('input').val('');
+            $('#phone_'+i).hide().find('input').val('');
+            $('#email_'+i).hide().find('input').val('');
           }
         }
         });

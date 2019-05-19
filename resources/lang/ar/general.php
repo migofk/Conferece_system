@@ -211,6 +211,7 @@ return [
  'Package' =>'باقة',
  'Double Room'=>'غرفة مزدوجة',
  'Single Room'=>'غرفة مفردة',
+ 'Tickets' => 'تذاكر',
 ];
 
  ?>

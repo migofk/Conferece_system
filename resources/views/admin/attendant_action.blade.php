@@ -32,8 +32,8 @@
       </div>
   @endif
 
-        <a href="{{route('product.index_company',['companyID' => $company->id])}}"  class="btn btn-small btn-success ">{{__('general.Products')}}</a>
-        <a href="{{route('event.index_company',['companyID' => $company->id])}}"  class="btn btn-small btn-success ">{{__('general.Events')}}</a>
+
+        <a href="{{url('')}}"  class="btn btn-small btn-success ">{{__('general.Tickets')}}</a>
 
              <div class="box-header">
 
@@ -41,285 +41,332 @@
              <!-- /.box-header -->
              <div class="box-body " id="editCompanyForm">
                <!-- form-->
-               <form class="form-horizontal" method="post" action="{{url('/adminLink/companies/'.$company->id)}}" enctype="multipart/form-data">
-                 @csrf
-                <input type="hidden" name="added_by" value="{{auth::user()->id}}">
-                <input type="hidden" name="_method" value="PUT">
-                 <div class="box-body">
-                   <!-- row //////////////////////// -->
-                   <div class="row">
+               <form class="form-horizontal" method="post" action="{{url('/adminLink/attendants/'.$attendant->id)}}" enctype="multipart/form-data">
+                @csrf
+               <input type="hidden" name="added_by" value="{{auth::user()->id}}">
+               <input type="hidden" name="_method" value="PUT">
+                <div class="box-body">
+
+                  <!-- row -->
+                  <div class="row">
+                    <div class="col-lg-6" >
+                    <!-- input -->
+                    <div class="form-group" style="padding:0 10px !important;">
+                      <label for="Name">How many invitations do you need? </label>
+
+                      <select required name="invitations" id="invitations" class="form-control">
+
+                        <option></option>
+                        @php
+                            $xx = count($attendants);
+                        @endphp
+                        @for ($i = 1; $i < 6; $i++)
+                        @if($i == $xx+1)
+                        <option  selected value="{{$i}}">{{$i}}</option>
+                        @else
+                      <option value="{{$i}}">{{$i}}</option>
+                      @endif
+                        @endfor
 
 
 
-
-
-                     <!-- col  //////////////////////// -->
-                     <div class="col-lg-4" >
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label>نوع الشركة</label>
-                         <select  class="form-control" name="type" id="type" value="{{$company->type}}" class="form-control" required>
-                           <option></option>
-                           @foreach ($types as $type)
-                             @php
-                               $selected = '';
-                               if($type->id == $company->type){
-                               $selected = 'selected';
-                               }
-                             @endphp
-                             <option {{$selected}} value="{{$type->id}}">{{$type->type}}</option>
-                           @endforeach
-
-
-                         </select>
-                       </div>
-                       <!-- ./input -->
-
-
-
-
-
-
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label>{{__('general.Category')}}</label>
-                         <select   multiple data-live-search="true"  class="selectpicker form-control" name="category_id[]" id="category_id" value="{{$company->category_id}}" class="form-control" required>
-
-                           @foreach ($categories as $category)
-                             @php
-                             $selected ="";
-                               foreach ($company->allcategories as $value) {
-                                if ($value->id == $category->id){
-                                  $selected = "selected";
-                                  break;
-                                }
-
-                               }
-                             @endphp
-                             <option  {{$selected}} value="{{$category->id}}">{{$category->category}}</option>
-                           @endforeach
-
-
-                         </select>
-                       </div>
-                       <!-- ./input -->
-
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">{{__('general.Website')}}</label>
-                         <input  class="form-control"  name="website" value="{{$company->website}}" placeholder="">
-                       </div>
-                       <!-- ./input -->
-
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label>{{__('general.Status')}}</label>
-                         <select  class="form-control" name="status" id="status" value="{{$company->status}}" class="form-control" required>
-                           <option></option>
-                           @foreach ($status as $statusX)
-                             @php
-                               $selected = '';
-                               if($statusX->id == $company->status){
-                               $selected = 'selected';
-                               }
-                             @endphp
-                             <option {{$selected}} value="{{$statusX->id}}">{{$statusX->status}}</option>
-                           @endforeach
-
-
-                         </select>
-                       </div>
-                       <!-- ./input -->
-
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">{{__('general.Tax Number')}}</label>
-                         <input  class="form-control"  name="tax_number" value="{{$company->tax_number}}" value="{{ old('Tax_Number') }}" placeholder="">
-                       </div>
-                       <!-- ./input -->
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">{{__('general.Contact Person')}}</label>
-                         <input  class="form-control"  name="contact_person" value="{{$company->contact_person}}" placeholder="" required>
-                       </div>
-                       <!-- ./input -->
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">البريد الالكترونى للشخص المفوض</label>
-                         <input  class="form-control"  name="person_email" value="{{$company->person_email}}" placeholder="" required>
-                       </div>
-                       <!-- ./input -->
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">عنوان الشخص المفوض</label>
-                         <input  class="form-control"  name="person_address" value="{{$company->person_address}}" placeholder="" required>
-                       </div>
-                       <!-- ./input -->
-
-
-                     </div>
-
-                     <!-- ./ col   ////////////////////////-->
-
-
-                     <!-- col  ////////////////////////-->
-                     <div class="col-lg-4" >
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">{{__('general.Address')}}</label>
-                         <input  class="form-control"  name="address" value="{{$company->address}}" value="{{ old('address') }}" placeholder="">
-                       </div>
-                       <!-- ./input -->
-
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">{{__('general.Country')}}</label>
-
-                         <select  name="country_id" id="country_id" value="{{$company->country_id}}" class="form-control">
-                           <option selected value="{{$company->country->id}}">{{$company->country->country}}</option>
-                           @foreach ($countries as $country)
-                             <option value="{{$country->id}}">{{$country->country}}</option>
-                           @endforeach
-                         </select>
-                       </div>
-                       <!-- ./input -->
-
-
-
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">{{__('general.State')}}</label>
-                         <select  name="state_id" id="state_id" value="{{$company->state_id}}" class="form-control">
-                          <option selected value="{{$company->state->id}}">{{$company->state->state}}</option>
-                           @foreach ($regions as $region)
-                             <option value="{{$region->id}}">{{$region->region}}</option>
-                           @endforeach
-                         </select>
-
-                       </div>
-                       <!-- ./input -->
-
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">{{__('general.City')}}</label>
-
-                         <select  name="city_id" id="city_id"  class="form-control">
-                           <option selected value="{{$company->city->id}}">{{$company->city->city}}</option>
-                           @foreach ($cities as $city)
-
-
-                             <option  value="{{$city->id}}">{{$city->city}}</option>
-                           @endforeach
-
-                         </select>
-                       </div>
-                       <!-- ./input -->
-
-
-
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">{{__('general.Post Code')}}</label>
-                         <input  class="form-control"  name="postcode" value="{{$company->postcode}}"  placeholder="">
-                       </div>
-                       <!-- ./input -->
-
-
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">{{__('general.Commercial Registry')}}</label>
-                         <input  class="form-control"  name="commercial_registry" value="{{$company->commercial_registry}}" placeholder="">
-                       </div>
-                       <!-- ./input -->
-
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">وظيفة الشخص المفوض</label>
-                         <input  class="form-control"  name="person_job" value="{{$company->person_job}}" placeholder="" required>
-                       </div>
-                       <!-- ./input -->
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">تليفون الشخص المفوض</label>
-                         <input  class="form-control"  name="person_phone1" value="{{$company->person_phone1}}" placeholder="" required>
-                       </div>
-                       <!-- ./input -->
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                         <label for="Name">تليفون الشخص الموفوض 2</label>
-                         <input  class="form-control"  name="person_phone2" value="{{$company->person_phone2}}" placeholder="" required>
-                       </div>
-                       <!-- ./input -->
-
-                     </div>
-                     <!-- ./ col  ////////////////////////-->
-
-
-                                          <!-- col  ////////////////////////-->
-                                          <div class="col-lg-4" >
-                                            <!-- input -->
-                                            <div class="form-group" style="padding: 0 10px !important;">
-                                              <label for="Company">{{__('general.Company')}}</label>
-                                              <input  class="form-control"  name="company" id="company" value="{{$company->company}}" placeholder="">
-                                            </div>
-                                            <!-- ./input -->
-
-
-
-
-                                            <!-- input -->
-                                            <div class="form-group" style="padding:0 10px !important;">
-                                              <label for="Name">{{__('general.Phone')}}</label>
-                                              <input  class="form-control"  name="phone" id="phone" value="{{$company->phone}}"  placeholder="">
-                                            </div>
-                                            <!-- ./input -->
-
-                                            <!-- input -->
-                                            <div class="form-group" style="padding:0 10px !important;">
-                                              <label for="Name">{{__('general.Email')}}</label>
-                                              <input  class="form-control"  name="email" id="email" value="{{$company->email}}" placeholder="">
-                                            </div>
-                                            <!-- ./input -->
-
-                                            <!-- input -->
-                                            <div class="form-group" style="padding:0 10px !important;">
-                                              <label for="Name">{{__('general.Logo image')}}</label>
-                                              <input type="file" class="form-control" id="featureImage"  name="featureImage" placeholder="">
-                                            </div>
-                                            <!-- ./input -->
-
-                                          </div>
-                                          <!-- ./ col  ////////////////////////-->
-
-
-
+                      </select>
+                    </div>
+                    <!-- ./input -->
                    </div>
-                   <!-- ./ row //////////////////////// -->
-                   <!-- row -->
-                   <div class="row">
-                     <div class="col-md-12">
-                       <!-- input -->
-                       <div class="form-group" style="padding:0 10px !important;">
-                        <label for="Name">{{__('general.Description')}}</label>
-                        <textarea class="form-control" name="description" rows="8" cols="80">{{$company->description}}</textarea>
-                       </div>
-                       <!-- ./input -->
+                  </div>
 
-                     </div>
-
-                   </div>
-
-                   <!-- /row -->
+                  <!-- /row -->
+                  <!-- row //////////////////////// -->
+                  <div class="row">
 
 
-                 </div>
-                 <!-- /.box-footer -->
+                    <!-- col  ////////////////////////-->
+                    <div class="col-lg-4" >
+                      <!-- input -->
+                      <div class="form-group" style="padding: 0 10px !important;">
+                        <label for="Company">{{__('general.Name')}}</label>
+                        <input required  class="form-control"  name="name" id="name" value="{{$attendant->name}}" placeholder="">
+                      </div>
+                      <!-- ./input -->
+                      @php
+                       $XC = 1;
+                      @endphp
+                      @foreach ($attendants as $attendantX)
+                         <div id="name_{{$XC}}" class="form-group" style="padding: 0 10px !important;">
+                            <label for="Company">{{__('general.Name')}} {{$XC+1}}</label>
+                         <input   class="form-control"  name="name_arr[]"  value="{{$attendantX->name}}"  placeholder="">
+                          </div>
+                       @php
+                       $XC++;
+                       @endphp
+                      @endforeach
+                      @for ($i=$XC; $i < 5; $i++)
+                        <div id="name_{{$i}}" class="form-group" style="padding: 0 10px !important;">
+                          <label for="Company">{{__('general.Name')}} {{$i+1}}</label>
+                          <input   class="form-control"  name="name_arr[]"   placeholder="">
+                        </div>
+                      @endfor
+                     <br><br>
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                        <label for="Name">{{__('general.Country')}}</label>
 
-               <div class="modal-footer">
-                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{__('general.Close')}}</button>
-                 <button id="saveBtn" type="submit" class="btn btn-success">{{__('general.Save')}}</button>
-               </div>
-             </form>
+                        <select required name="country_id" id="country_id" class="form-control">
+                          <option></option>
+                          @foreach ($countries as $country)
+                          @php
+                          $selected = '';
+                          if($country->id == $attendant->country_id){
+                          $selected = 'selected';
+                          }
+                          @endphp
+                          <option {{$selected }} value="{{$country->id}}">{{$country->country}}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                      <!-- ./input -->
+
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                        <label for="Name">{{__('general.Adult Number')}}</label>
+                        <input type="number" min="1"  class="form-control"  name="adult_number" value="{{$attendant->subattendants->adult_number}}" placeholder="" required>
+                      </div>
+                      <!-- ./input -->
+
+
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                        <label for="Name">{{__('general.Package')}}</label>
+
+                        <select required name="package" id="package" class="form-control">
+                                <option value="{{$attendant->subattendants->package}}">{{$attendant->subattendants->package}}</option>
+                          <option></option>
+                            <option value="Standard Main">Standard Main</option>
+                            <option value="Standard Relax">Standard Relax</option>
+                            <option value="Standard Nile">Standard Nile</option>
+                            <option value="Standard Full">Standard Full</option>
+                         <option></option>
+                            <option value="Standard Main">Deluxe Main</option>
+                            <option value="Standard Relax">Deluxe Relax</option>
+                            <option value="Standard Nile">Deluxe Nile</option>
+                            <option value="Standard Full">Deluxe Full</option>
+
+                        </select>
+                      </div>
+                      <!-- ./input -->
+
+
+
+
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                            <label>{{__('general.Status')}}</label>
+                            <select  class="form-control" name="status" class="form-control" required>
+                              <option></option>
+                              @foreach ($status as $statusX)
+                                @php
+                                  $selected = '';
+                                  if($statusX->id == $attendant->status){
+                                  $selected = 'selected';
+                                  }
+                                @endphp
+                                <option {{$selected}} value="{{$statusX->id}}">{{$statusX->status}}</option>
+                              @endforeach
+
+
+                            </select>
+                          </div>
+                          <!-- ./input -->
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <!-- ./ col  ////////////////////////-->
+
+
+
+                    <!-- col  //////////////////////// -->
+                    <div class="col-lg-4" >
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                        <label for="Name">{{__('general.Phone')}}</label>
+                        <input required class="form-control"  name="phone" id="phone" value="{{$attendant->phone}}"  placeholder="">
+                      </div>
+                      <!-- ./input -->
+
+                      <!-- ./input -->
+                      @php
+                      $XC = 1;
+                     @endphp
+                     @foreach ($attendants as $attendantX)
+                        <div id="phone_{{$XC}}" class="form-group" style="padding: 0 10px !important;">
+                           <label for="Company">{{__('general.Phone')}} {{$XC+1}}</label>
+                        <input   class="form-control"  name="phone_arr[]"  value="{{$attendantX->phone}}"  placeholder="">
+                         </div>
+                      @php
+                      $XC++;
+                      @endphp
+                     @endforeach
+                      @for ($i=$XC; $i < 5; $i++)
+                        <div id="phone_{{$i}}" class="form-group" style="padding: 0 10px !important;">
+                          <label for="Company">{{__('general.Phone')}} {{$i+1}}</label>
+                          <input   class="form-control"  name="phone_arr[]"  placeholder="">
+                        </div>
+                      @endfor
+                     <br><br>
+                      <!-- input -->
+
+                      <!-- input -->
+                      <div class="form-group" style="padding: 0 10px !important;">
+                        <label for="event">{{__('general.Arrival Date')}}</label>
+                        <input  class="form-control timepicker"  name="arrival_date" id="arrival_date" value="{{$attendant->subattendants->arrival_date}}" placeholder="">
+                      </div>
+                      <!-- ./input -->
+
+
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                        <label for="Name">{{__('general.Childern Number')}}</label>
+                        <input type="number" min="0"  class="form-control"  name="children_number" value="{{$attendant->subattendants->children_number}}" placeholder="" required>
+                      </div>
+                      <!-- ./input -->
+
+
+
+
+
+
+
+
+
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                        <label for="Name">{{__('general.Single Room')}}</label>
+                        <input type="number" min="0"  class="form-control"  name="room_single" value="{{$attendant->subattendants->room_single}}" placeholder="" required>
+                      </div>
+                      <!-- ./input -->
+
+
+
+
+                    </div>
+
+                    <!-- ./ col   ////////////////////////-->
+
+
+                    <!-- col  ////////////////////////-->
+                    <div class="col-lg-4" >
+
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                        <label for="Name">{{__('general.Email')}}</label>
+                        <input required class="form-control"  name="email" id="email" value="{{$attendant->email}}" placeholder="">
+                      </div>
+                      <!-- ./input -->
+
+                      <!-- ./input -->
+                     @php
+                      $XC = 1;
+                     @endphp
+                     @foreach ($attendants as $attendantX)
+                        <div id="email_{{$XC}}" class="form-group" style="padding: 0 10px !important;">
+                           <label for="Company">{{__('general.Email')}} {{$XC+1}}</label>
+                        <input   class="form-control"  name="email_arr[]"  value="{{$attendantX->email}}"  placeholder="">
+                         </div>
+                      @php
+                      $XC++;
+                      @endphp
+                     @endforeach
+                      @for ($i=$XC; $i < 5; $i++)
+                        <div id="email_{{$i}}" class="form-group" style="padding: 0 10px !important;">
+                          <label for="Company">{{__('general.Email')}} {{$i+1}}</label>
+                          <input   class="form-control"  name="email_arr[]"  placeholder="">
+                        </div>
+                      @endfor
+                     <br><br>
+                      <!-- input -->
+
+                      <!-- input -->
+                      <div class="form-group" style="padding: 0 10px !important;">
+                        <label for="event">{{__('general.Departure Date')}}</label>
+                        <input  class="form-control timepicker"  name="departure_date" id="departure_date" value="{{$attendant->subattendants->departure_date}}" placeholder="">
+                      </div>
+                      <!-- ./input -->
+
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                        <label for="Name">{{__('general.Childern Age')}}</label>
+                        <input type="number" min="0" required class="form-control"  name="children_age" value="{{$attendant->subattendants->children_age}}" placeholder="" required>
+                      </div>
+                      <!-- ./input -->
+
+
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                        <label for="Name">{{__('general.Double Room')}}</label>
+                        <input type="number" min="0" required class="form-control"  name="room_double" value="{{$attendant->subattendants->room_double}}" placeholder="" required>
+                      </div>
+                      <!-- ./input -->
+
+
+                    </div>
+                    <!-- ./ col  ////////////////////////-->
+
+
+
+                  </div>
+                  <!-- ./ row //////////////////////// -->
+
+
+                  <!-- row -->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                       <label for="Name">{{__('general.Flight Details')}}</label>
+                       <textarea class="form-control" name="flight_details" rows="4" cols="80">{{$attendant->subattendants->flight_details}}</textarea>
+                      </div>
+                      <!-- ./input -->
+
+                    </div>
+
+                  </div>
+
+                  <!-- /row -->
+
+                  <!-- row -->
+                  <div class="row">
+                    <div class="col-md-12">
+                      <!-- input -->
+                      <div class="form-group" style="padding:0 10px !important;">
+                       <label for="Name">{{__('general.Comment')}}</label>
+                       <textarea class="form-control" name="comment" rows="4" cols="80">{{$attendant->subattendants->comment}}</textarea>
+                      </div>
+                      <!-- ./input -->
+
+                    </div>
+
+                  </div>
+
+                  <!-- /row -->
+
+
+                </div>
+                <!-- /.box-footer -->
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{__('general.Close')}}</button>
+                <button id="saveBtn" type="submit" class="btn btn-success">{{__('general.Save')}}</button>
+              </div>
+            </form>
              <!-- ./ form-->
              </div>
              <!-- /.box-body -->
@@ -337,32 +384,36 @@
 
 @section('scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/js/bootstrap-select.js"></script>
-  <!-- DataTables -->
-<script src="{{asset('assets/adminLTE/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
-<script src="{{asset('assets/adminLTE/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
-<link rel="stylesheet" href="{{ asset('ezdz/jquery.ezdz.min.css') }}">
-<script src="{{ asset('ezdz/jquery.ezdz.min.js') }}"></script>
+
 <script>
 $(function () {
   $('.selectpicker').selectpicker();
 
-
-   $('[type="file"]').ezdz({
-       text: 'Logo',
-       validators: {
-
-       },
-       reject: function(file, errors) {
-           if (errors.mimeType) {
-               alert(file.name + ' must be an image.');
-           }
-
-
-       }
-   });
-   $('#featureImage').ezdz('preview', '{{url('/photos/company-logos/'.$company->logo)}}');
+  for (var i = {{$xx+1}}; i < 5; i++) {
+        $('#name_'+i).hide().find('input').val('');
+        $('#phone_'+i).hide().find('input').val('');
+        $('#email_'+i).hide().find('input').val('');
+      }
  });
 
+
+
+        // #invitations
+        $('#invitations').change(function(){
+          var x = $(this).val();
+
+          for (var i = 1; i < 5; i++) {
+            if((i < x) && (x != 1)){
+            $('#name_'+i).show().find('input').val('');
+            $('#phone_'+i).show().find('input').val('');
+            $('#email_'+i).show().find('input').val('');
+          }else{
+            $('#name_'+i).hide().find('input').val('');
+            $('#phone_'+i).hide().find('input').val('');
+            $('#email_'+i).hide().find('input').val('');
+          }
+        }
+        });
 
  $('.editbutton').click(function(){
    var editName= $(this).attr('item');
@@ -385,59 +436,17 @@ $(function () {
 
 
 
+
 </script>
 
 <script>
 
-@php
-  $countries = App\country::where('status',1)->get();
-@endphp
-  var states = [];
-  var cities = [];
-  @foreach ($countries as $country)
-states[{{$country->id}}] =[
-     @foreach ($country->states as $value)
-      { 'id':'{{$value->id}}','name':'{{$value->state}}'},
-     @endforeach
-  ];
-
-   @foreach ($country->states as $state)
-     cities[{{$state->id}}] =[
-     @foreach ($state->cities as  $value)
-     { 'id':'{{$value->id}}','name':'{{$value->city}}'},
-     @endforeach
-     ];
-   @endforeach
-   @endforeach
-
-$('#country_id').change(function(){
-  var country_id = $('#country_id').val();
-  //$('#city_id')[0].options.length = 0;
-  $('#state_id').find('option:not(:first)').remove();
-  $('#state_id').find('option:not(:first)').remove();
-  $.each(states[country_id], function (i, item) {
-    $('#state_id').append($('<option>', {
-        value: item.id,
-        text : item.name
-    }));
-});
-
-});
 
 
 
-$('#state_id').change(function(){
-  var state_id = $('#state_id').val();
-  //$('#zone_id')[0].options.length = 0;
-  $('#city_id').find('option:not(:first)').remove();
-  $.each(cities[state_id], function (i, item) {
-    $('#city_id').append($('<option>', {
-        value: item.id,
-        text : item.name
-    }));
-});
 
-});
+
+
 </script>
 
 <script type="text/javascript" src="{{asset('js/admin/company.js')}}"></script>

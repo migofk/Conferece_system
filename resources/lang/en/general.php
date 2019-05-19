@@ -216,6 +216,7 @@ return [
     'Package' =>'Package',
     'Double Room'=>'Double Room',
     'Single Room'=>'Single Room',
+    'Tickets'=>'Tickets',
 
 
 
