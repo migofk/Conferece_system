@@ -34,19 +34,11 @@
           <table id="example1" class="table  table-bordered table-striped">
             <thead>
               <tr>
-                <th>{{__('general.Company')}}</th>
-                <th>{{__('general.Category')}}</th>
-                <th>{{__('general.Owner')}}</th>
-                <th>{{__('general.Contact Person')}}</th>
+                <th>{{__('general.Name')}}</th>
                 <th>{{__('general.Phone')}}</th>
                 <th>{{__('general.Email')}}</th>
-                <th>{{__('general.Address')}}</th>
-                <th>{{__('general.City')}}</th>
-                <th>{{__('general.State')}}</th>
                 <th>{{__('general.Country')}}</th>
-                <th>{{__('general.Post Code')}}</th>
-                <th>{{__('general.Tax Number')}}</th>
-                <th>{{__('general.Commercial Registry')}}</th>
+                <th>{{__('general.Status')}}</th>
                 <td>{{__('general.Created at')}}</td>
                 <td>{{__('general.Action')}}</td>
 
@@ -56,20 +48,11 @@
 
               @foreach ($rows as $row)
                 <tr>
-                  <td>{{$row->company}}</td>
-                  <td>{{$row->category->category}}</td>
-                  <td>{{$row->user->name}}</td>
-                  <td>{{$row->contact_person}}</td>
+                  <td>{{$row->name}}</td>
                   <td>{{$row->phone}}</td>
                   <td>{{$row->email}}</td>
-                  <td>{{$row->address}}</td>
-                  <td>{{$row->city->city}}</td>
-                  <td>{{$row->state->state}}</td>
                   <td>{{$row->country->country}}</td>
-                  <td>{{$row->postcode}}</td>
-                  <td>{{$row->tax_number}}</td>
-                  <td>{{$row->commercial_registry}}</td>
-
+                  <td>{{$row->status}}</td>
                   <td>{{$row->created_at}}</td>
                   <td>
                     <a type="link" href="{{url('/adminLink/companies/'.$row->id.'/edit')}}"  class="btn btn-xs btn-success btn-xs" >{{__('general.View')}}</a>
@@ -107,7 +90,7 @@
 
 
                 <!-- form-->
-                <form class="form-horizontal" method="post" action="{{url('/adminLink/companies')}}" enctype="multipart/form-data">
+                <form class="form-horizontal" method="post" action="{{url('/adminLink/attendants')}}" enctype="multipart/form-data">
                   @csrf
                  <input type="hidden" name="added_by" value="{{auth::user()->id}}">
                   <div class="box-body">
@@ -150,7 +133,7 @@
                         @for ($i=1; $i < 5; $i++)
                           <div id="name_{{$i}}" class="form-group" style="padding: 0 10px !important;">
                             <label for="Company">{{__('general.Name')}} {{$i+1}}</label>
-                            <input required  class="form-control"  name="name[]"   placeholder="">
+                            <input   class="form-control"  name="name_arr[]"   placeholder="">
                           </div>
                         @endfor
                        <br><br>
@@ -179,7 +162,7 @@
                         <div class="form-group" style="padding:0 10px !important;">
                           <label for="Name">{{__('general.Package')}}</label>
 
-                          <select required name="country_id" id="country_id" class="form-control">
+                          <select required name="package" id="package" class="form-control">
                             <option></option>
                               <option value="Standard Main">Standard Main</option>
                               <option value="Standard Relax">Standard Relax</option>
@@ -238,7 +221,7 @@
                         @for ($i=1; $i < 5; $i++)
                           <div id="phone_{{$i}}" class="form-group" style="padding: 0 10px !important;">
                             <label for="Company">{{__('general.Phone')}} {{$i+1}}</label>
-                            <input required  class="form-control"  name="phone[]"  placeholder="">
+                            <input   class="form-control"  name="phone_arr[]"  placeholder="">
                           </div>
                         @endfor
                        <br><br>
@@ -255,7 +238,7 @@
                         <!-- input -->
                         <div class="form-group" style="padding:0 10px !important;">
                           <label for="Name">{{__('general.Childern Number')}}</label>
-                          <input type="number" min="0" required class="form-control"  name="childern_number" value="{{ old('childern_number') }}" placeholder="" required>
+                          <input type="number" min="0" required class="form-control"  name="children_number" value="{{ old('children_number') }}" placeholder="" required>
                         </div>
                         <!-- ./input -->
 
@@ -270,7 +253,7 @@
                         <!-- input -->
                         <div class="form-group" style="padding:0 10px !important;">
                           <label for="Name">{{__('general.Single Room')}}</label>
-                          <input type="number" min="0" required class="form-control"  name="single_room" value="{{ old('single_room') }}" placeholder="" required>
+                          <input type="number" min="0" required class="form-control"  name="room_single" value="{{ old('single_room') }}" placeholder="" required>
                         </div>
                         <!-- ./input -->
 
@@ -296,7 +279,7 @@
                         @for ($i=1; $i < 5; $i++)
                           <div id="email_{{$i}}" class="form-group" style="padding: 0 10px !important;">
                             <label for="Company">{{__('general.Email')}} {{$i+1}}</label>
-                            <input required  class="form-control"  name="email[]"  placeholder="">
+                            <input   class="form-control"  name="email_arr[]"  placeholder="">
                           </div>
                         @endfor
                        <br><br>
@@ -320,7 +303,7 @@
                         <!-- input -->
                         <div class="form-group" style="padding:0 10px !important;">
                           <label for="Name">{{__('general.Double Room')}}</label>
-                          <input type="number" min="0" required class="form-control"  name="double_room" value="{{ old('double_room') }}" placeholder="" required>
+                          <input type="number" min="0" required class="form-control"  name="room_double" value="{{ old('double_room') }}" placeholder="" required>
                         </div>
                         <!-- ./input -->
 

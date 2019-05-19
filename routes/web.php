@@ -35,7 +35,7 @@ Route::get('/contact', 'HomeController@contactUs');
 ////// admin routes/////
 Route::group(['middleware' => ['role:admin']], function () {
     //
-//about
+//attendants
 Route::resource('/adminLink/attendants', 'attendantController');
 Route::get('/adminLink/reviewattendants', 'attendantController@reviewattendants');
 //about

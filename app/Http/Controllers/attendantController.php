@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use DB;
 use  Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
+use auth;
 class attendantController extends Controller
 {
 
@@ -90,17 +91,65 @@ class attendantController extends Controller
      */
     public function store(Request $request)
     {
-      $data = $request->except('_token','featureImage');
+        $request->validate([
+            'name' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'email' => 'required|unique:attendants|max:255',
+
+        ]);
+
+      $data = $request->except('_token','name_arr','phone_arr','email_arr','name','phone','email','country_id','invitations','status');
+      $data_firstAttandent=([
+       'name' => $request->name,
+       'phone' => $request->phone,
+       'email' => $request->email,
+       'status' => $request->status,
+       'country_id' => $request->country_id,
+      ]);
+
+
+
 
      $request->start_at = Carbon::parse($request->start_at)->format('Y-m-d H:i:s');
      $request->end_at = Carbon::parse($request->end_at)->format('Y-m-d H:i:s');
 
-      //storing image
-      if(Input::hasFile('featureImage')){
-        $data['photo'] =  $this->saveFile($request->file('featureImage'),'photos/attendant-images');
-      }
-        //storing data
-      $TheID =  $this->saveDB_Data('attendants',$data);
+
+        //storing parent first attendant and package.
+        $data['added_by']= auth::user()->id;
+        $data['attendant_id'] = $TheID =  $this->saveDB_Data('attendants',$data_firstAttandent);
+        //storing package reference is attendant_id
+        $this->saveDB_Data('subattendants',$data);
+       //creating ticket for parent attendant
+     $data_ticket =([
+        'status' => $request->status,
+        'attendant_id' => $TheID,
+     ]);
+     $this->saveDB_Data('tickets',$data_ticket);
+
+        //storing other attendants
+        $x= 0;
+        foreach($request->name_arr as $nameX){
+            if( $nameX != null){
+            $data_otherAttendant=([
+                'name' => $nameX,
+                'phone' => $request->phone_arr[$x],
+                'email' => $request->email_arr[$x],
+                'status' => $request->status,
+                'parent_id'=>$TheID,
+                'country_id' => $request->country_id,
+               ]);
+               $TheID_sub = $this->saveDB_Data('attendants',$data_otherAttendant);
+               $data_ticket_sub =([
+                'status' => $request->status,
+                'parent_attendant' => $TheID,
+                'attendant_id' => $TheID_sub,
+               ]);
+               $this->saveDB_Data('tickets',$data_ticket_sub);
+            }
+            $x++;
+        }
+
+
       return redirect(url('adminLink/attendants/'.$TheID.'/edit'));
     }
 

@@ -19,7 +19,7 @@ class CreateAttendantsTable extends Migration
             $table->string('email',150)->unique();
             $table->string('phone',255)->nullable();
             $table->integer('status')->unsigned()->nullable();
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries')
           ->onDelete('cascade');

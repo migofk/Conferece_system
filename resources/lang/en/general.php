@@ -209,7 +209,7 @@ return [
     'Rejected Attendants' => 'Rejected Attendants',
     'Adult Number' =>'Adult Number',
     'Childern Number' =>'Childern Number',
-    'Childern Age' =>'Adult Age',
+    'Childern Age' =>'Childern Age',
     'Arrival Date' =>'Arrival Date',
     'Departure Date' =>'Departure Date',
     'Flight Details' =>'Flight Details',
