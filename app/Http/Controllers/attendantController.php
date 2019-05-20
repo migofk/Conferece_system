@@ -110,8 +110,8 @@ class attendantController extends Controller
 
 
 
-     $request->start_at = Carbon::parse($request->start_at)->format('Y-m-d H:i:s');
-     $request->end_at = Carbon::parse($request->end_at)->format('Y-m-d H:i:s');
+    // $request->start_at = Carbon::parse($request->start_at)->format('Y-m-d H:i:s');
+    // $request->end_at = Carbon::parse($request->end_at)->format('Y-m-d H:i:s');
 
 
         //storing parent first attendant and package.
@@ -198,22 +198,70 @@ class attendantController extends Controller
      */
     public function update(Request $request, attendant $attendant)
     {
-      return 'wlw';
-      $data = $request->except('_token','_method','featureImage');
-      $request->start_at = Carbon::parse($request->start_at)->format('Y-m-d H:i:s');
-      $request->end_at = Carbon::parse($request->end_at)->format('Y-m-d H:i:s');
+        $request->validate([
+            'name' => 'required|max:255',
+            'phone' => 'required|max:255',
+            //'email' => 'required|unique:attendants|max:255',
 
-      $data['updated_at']=Carbon::now();
+        ]);
 
-      //storing image
+      $data = $request->except('_token','_method','name_arr','phone_arr','email_arr','name','phone','email','country_id','invitations','status');
+      $data_firstAttandent=([
+       'name' => $request->name,
+       'phone' => $request->phone,
+       'email' => $request->email,
+       'status' => $request->status,
+       'country_id' => $request->country_id,
+      ]);
 
-      if(Input::hasFile('featureImage')){
-        $this->deleteFile('photos/attendant-images/'.$attendant->photo);
-        $data['photo'] =  $this->saveFile($request->file('featureImage'),'photos/attendant-images');
-      }
 
-      DB::table('attendants')->where('id', $attendant->id)->update($data);
-      return redirect()->back();
+
+
+     //$request->start_at = Carbon::parse($request->start_at)->format('Y-m-d H:i:s');
+     //$request->end_at = Carbon::parse($request->end_at)->format('Y-m-d H:i:s');
+
+
+        //storing parent first attendant and package.
+        $data['added_by']= auth::user()->id;
+        $this->updateDB_Data('attendants',$data_firstAttandent,$attendant->id);
+        //storing package reference is attendant_id
+        $this->updateDB_Data('subattendants',$data,$attendant->subattendants->id);
+       //creating ticket for parent attendant
+
+       $data_ticket =([
+        'status' => $request->status,
+       ]);
+       $this->updateDB_Data('tickets',$data_ticket,$attendant->ticket->id);
+        // deleting other attendants
+
+        foreach ($attendant->childern as $child) {
+            $this->deleteDB_Data('attendants',$child->id);
+        }
+        //storing other attendants
+        $x= 0;
+        foreach($request->name_arr as $nameX){
+            if( $nameX != null){
+            $data_otherAttendant=([
+                'name' => $nameX,
+                'phone' => $request->phone_arr[$x],
+                'email' => $request->email_arr[$x],
+                'status' => $request->status,
+                'parent_id'=>$attendant->id,
+                'country_id' => $request->country_id,
+               ]);
+               $TheID_sub = $this->saveDB_Data('attendants',$data_otherAttendant);
+               $data_ticket_sub =([
+                'status' => $request->status,
+                'parent_attendant' =>$attendant->id,
+                'attendant_id' => $TheID_sub,
+               ]);
+               $this->saveDB_Data('tickets',$data_ticket_sub);
+            }
+            $x++;
+        }
+
+
+      return redirect(url('adminLink/attendants/'.$attendant->id.'/edit'));
     }
 
     /**

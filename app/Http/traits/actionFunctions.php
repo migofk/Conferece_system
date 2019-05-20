@@ -41,5 +41,26 @@ public function saveDB_Data($Table,$data){
 
 /***************************************/
 
+public function updateDB_Data($Table,$data,$id){
+    //inseting data form
+    $data['created_at'] =Carbon::now() ;
+    $data['updated_at'] = Carbon::now();
+
+    $TheID = DB::table($Table)->where('id',$id)->update($data);
+
+
+    return $TheID;
+   }
+
+  /***************************************/
+  public function deleteDB_Data($Table,$id){
+    //inseting data form
+    $TheID = DB::table($Table)->where('id',$id)->delete();
+
+
+    return $TheID;
+   }
+
+  /***************************************/
 
 }

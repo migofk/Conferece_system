@@ -17,4 +17,16 @@ class attendant extends Model
     {
       return $this->hasOne('App\subattendant','attendant_id');
     }
+
+    public function ticket()
+    {
+      return $this->hasOne('App\ticket','attendant_id');
+    }
+
+    public function childern()
+    {
+      return $this->hasMany('App\attendant','parent_id');
+    }
+
+
 }
