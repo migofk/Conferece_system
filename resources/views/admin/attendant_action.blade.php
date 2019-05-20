@@ -12,18 +12,20 @@
 @section('headerDescription','Company Module')
 @section('body')
 
-  @isset($_GET['success'])
-  <div class="container">
 
-  <div class="alert alert-success alert-dismissible">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <strong> تم تعديل البيانات بنجاح! </strong>
-  </div>
-  </div>
-  @endisset
   <div class="box">
+    @isset($_GET['success'])
+
+
+    <div class="alert alert-success alert-dismissible">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>SUCCESS</strong>
+    </div>
+
+    @endisset
+
     @if ($errors->any())
-      <div class="alert alert-danger">
+      <div class="alert alert-danger alert-dismissible">
           <ul>
               @foreach ($errors->all() as $error)
                   <li>{{ $error }}</li>
@@ -33,10 +35,10 @@
   @endif
 
 
-        <a href="{{url('/adminLink/tickets/'.$attendant->id)}}"  class="btn btn-small btn-success ">{{__('general.Tickets')}}</a>
+
 
              <div class="box-header">
-
+        <a href="{{url('/adminLink/tickets/'.$attendant->id)}}"  class="btn btn-small btn-success ">{{__('general.Tickets')}}</a>
              </div>
              <!-- /.box-header -->
              <div class="box-body " id="editCompanyForm">
@@ -363,7 +365,7 @@
 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">{{__('general.Close')}}</button>
+
                 <button id="saveBtn" type="submit" class="btn btn-success">{{__('general.Save')}}</button>
               </div>
             </form>
