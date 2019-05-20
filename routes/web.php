@@ -38,6 +38,9 @@ Route::group(['middleware' => ['role:admin']], function () {
 //attendants
 Route::resource('/adminLink/attendants', 'attendantController');
 Route::get('/adminLink/reviewattendants', 'attendantController@reviewattendants');
+//Tickets
+Route::get('/adminLink/tickets/{attendantID}', 'attendantController@get_attendant_Ticket');
+
 //about
 Route::resource('/adminLink/about', 'aboutController');
 //contact

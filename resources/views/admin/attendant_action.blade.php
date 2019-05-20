@@ -33,7 +33,7 @@
   @endif
 
 
-        <a href="{{url('')}}"  class="btn btn-small btn-success ">{{__('general.Tickets')}}</a>
+        <a href="{{url('/adminLink/tickets/'.$attendant->id)}}"  class="btn btn-small btn-success ">{{__('general.Tickets')}}</a>
 
              <div class="box-header">
 

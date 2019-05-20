@@ -270,6 +270,16 @@ class attendantController extends Controller
      * @param  \App\attendant  $attendant
      * @return \Illuminate\Http\Response
      */
+
+    public function get_attendant_Ticket($attendantID)
+    {
+
+       $attendant = attendant::find($attendantID);
+       $menuActive = array('menu'=>'c2','submenu' =>'c2-l3');
+       $name=__('general.attendants');
+     return view("admin.tickets_attendant",  compact('attendants','menuActive','name'));
+    }
+
     public function destroy(attendant $attendant)
     {
       $this->deleteFile('photos/attendant-images/'.$attendant->photo);
