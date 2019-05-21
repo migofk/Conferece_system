@@ -24,7 +24,7 @@
                         <img class="img-responsive" src="{{url('public/images/logo_450.png')}}" alt="">
                   </div>
                   <div class="col-md-10">
-                    <h3 class="text-bold"> National Evaluation Capacity NEC 2019 <span class="pull-right">#00{{$attendant->ticket->id}}</span></h3>
+                    <h3 class="text-bold"> National Evaluation Conference NEC 2019 <span class="pull-right">#00{{$attendant->ticket->id}}</span></h3>
                     <h3>#00{{$attendant->id}}-{{$attendant->name}}-{{$countTickets}}</h3>
                     <h3>   <span>Free</span> </h3>
                   </div>
@@ -45,7 +45,7 @@
                 <img class="img-responsive" src="{{url('public/images/logo_450.png')}}" alt="">
           </div>
           <div class="col-md-10">
-            <h3 class="text-bold"> National Evaluation Capacity NEC 2019 <span class="pull-right">#00{{$value->id}}</span></h3>
+            <h3 class="text-bold"> National Evaluation Conference NEC 2019 <span class="pull-right">#00{{$value->id}}</span></h3>
             <h3>#00{{$attendant->id}}-{{$attendant->name}}-{{$countTickets}}</h3>
             <h3>   <span>Free</span> </h3>
           </div>
