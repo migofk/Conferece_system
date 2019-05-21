@@ -1,13 +1,13 @@
 @extends('layouts.adminLayout')
 @section($menuActive['menu'],'active')
 @section($menuActive['submenu'],'active')
-@section('title','Company')
+@section('title','Attendants')
 @section('meta')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.8.1/css/bootstrap-select.css">
 @endsection
 
 @section('pageHeader',$name)
-@section('headerDescription','Company Module')
+@section('headerDescription','Attendant Module')
 @section('body')
 
 

@@ -1,7 +1,7 @@
 @extends('layouts.adminLayout')
 @section($menuActive['menu'],'active')
 @section($menuActive['submenu'],'active')
-@section('title','Company')
+@section('title','Attendants')
 
 @section('meta')
   <!-- DataTables -->
@@ -9,7 +9,7 @@
 @endsection
 
 @section('pageHeader',$name)
-@section('headerDescription','Company Module')
+@section('headerDescription','Attendant Module')
 @section('body')
 
 
