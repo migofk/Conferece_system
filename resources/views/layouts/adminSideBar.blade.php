@@ -17,7 +17,7 @@
       <li class="@yield('c2-l1')"><a href="{{url('/adminLink/attendants')}}">{{__('general.Attendants')}}</a></li>
     <li class="@yield('c2-l4')"><a href="{{url('/adminLink/reviewattendants')}}">{{__('general.waiting review')}}</a></li>
     <li class="@yield('c2-l2')"><a href="{{url('/adminLink/rejectedattendants')}}">{{__('general.Rejected Attendants')}}</a></li>
-      <li class="@yield('c2-l3')"><a href="{{url('/adminLink/events')}}">{{__('general.Events')}}</a></li>
+
     </ul>
   </li>
 
@@ -37,13 +37,7 @@
 
 
       <li class="@yield('c1-l7')"><a href="{{url('get/countries')}}">{{__('general.Countries')}}</a></li>
-      <li class="@yield('c1-l8')"><a href="{{url('get/states')}}">{{__('general.States')}}</a></li>
-      <li class="@yield('c1-l9')"><a href="{{url('get/cities')}}">{{__('general.Cities')}}</a></li>
-      <li class="@yield('c1-l10')"><a href="{{url('get/categories')}}">{{__('general.Categories')}}</a></li>
-
-      <li class="@yield('c1-l11')"><a href="{{url('/adminLink/about')}}">{{__('general.about')}}</a></li>
-      <li class="@yield('c1-l12')"><a href="{{url('/adminLink/contact')}}">{{__('general.contactus')}}</a></li>
-      <li class="@yield('c1-l13')"><a href="{{url('/adminLink/intro')}}">{{__('general.intro')}}</a></li>
+      
       <li class="@yield('c1-l14')"><a href="{{url('/adminLink/slider')}}">{{__('general.sliders')}}</a></li>
 
     </ul>

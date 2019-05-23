@@ -70,8 +70,6 @@
                                                           <label>Your country</label>
                                                           <select name="country_id" required class="u-full-width size" id="exampleRecipientInput">
                                                                  @foreach ($countries as $country)
-
-
                                                                   <option value="{{$country->id}}">{{$country->country}}</option>
                                                                     @endforeach
                                                                 </select>
@@ -93,15 +91,15 @@
 
                                               <div class="three columns" style="height:92px;">
                                                       <label >Adult number</label>
-                                                      <input name="adult_number" class="u-full-width same-grade size" type="number" placeholder="Enter number"   >
+                                                      <input min="0" name="adult_number" class="u-full-width same-grade size" type="number" placeholder="Enter number"   >
                                               </div>
                                               <div class="three columns" style="height:92px;">
                                                       <label >Children number</label>
-                                                      <input  name="children_number"  class="u-full-width size" type="number" placeholder="Enter number"  >
+                                                      <input min="0"  name="children_number"  class="u-full-width size" type="number" placeholder="Enter number"  >
                                               </div>
                                               <div class="three columns" style="height:92px;">
                                                       <label >Children Age</label>
-                                                      <input name="children_age"  class="u-full-width size" type="number" placeholder="Enter number"  >
+                                                      <input min="0" name="children_age"  class="u-full-width size" type="number" placeholder="Enter number"  >
                                               </div>
                                               <div class="nine columns">
                                                       <label>Package type<span class="required">*</span></label>
@@ -117,9 +115,10 @@
                                               <div id="package-type-standred" class="nine columns" style="height:92px; display: none;">
                                                       <label>Choose your package</label>
                                                       <select name="package" class="u-full-width" id="ex">
-                                                              <option value="Option 1">Standard Package  </option>
-                                                              <option value="Option 2">Partnership</option>
-                                                              <option value="Option 3">general</option>
+                                                        <option value="Standard Main">Standard Main</option>
+                                                        <option value="Standard Relax">Standard Relax</option>
+                                                        <option value="Standard Nile">Standard Nile</option>
+                                                        <option value="Standard Full">Standard Full</option>
                                                             </select>
 
                                               </div>
@@ -127,9 +126,10 @@
                                               <div id="package-type-dulex" class="nine columns" style="height:92px; display: none;">
                                                       <label>Choose your package</label>
                                                       <select name="package" class="u-full-width" id="ex">
-                                                              <option value="Option 1">Deluxe Package</option>
-                                                              <option value="Option 2">Partnership</option>
-                                                              <option value="Option 3">general</option>
+                                                        <option value="Standard Main">Deluxe Main</option>
+                                                        <option value="Standard Relax">Deluxe Relax</option>
+                                                        <option value="Standard Nile">Deluxe Nile</option>
+                                                        <option value="Standard Full">Deluxe Full</option>
                                                             </select>
 
                                               </div>
@@ -146,12 +146,12 @@
 
                                               <div class="three columns">
                                                       <label >Single room</label>
-                                                      <input name="room_single" class="u-full-width size" type="text" placeholder="Enter No. of single room" id="exampleEmailInput">
+                                                      <input min="0" name="room_single" class="u-full-width size" type="text" placeholder="Enter No. of single room" id="exampleEmailInput">
                                               </div>
                                               <div class="three columns">
 
                                                       <label >Double room</label>
-                                                      <input name="room_double" class="u-full-width size" type="text" placeholder="Enter No. of double room" id="exampleEmailInput">
+                                                      <input min="0" name="room_double" class="u-full-width size" type="text" placeholder="Enter No. of double room" id="exampleEmailInput">
                                               </div>
 
                                              <!-- <div class="nine columns">

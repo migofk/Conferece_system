@@ -30,28 +30,51 @@ class attendantController extends Controller
       $menuActive = array('menu'=>'c2','submenu' =>'c2-l1');
       $name=__('general.Attendants');
       $rows =  attendant::where('status',1)->get();
-      $Users=  User::where('status',1)->get()->sortBy('name');
-      $companies=  company::where('status',1)->get()->sortBy('name');
-      $categories=  category::where('status',1)->get()->sortBy('category');
       $countries =  country::where('status',1)->get()->sortBy('country');
-      $regions =  state::where('status',1)->get()->sortBy('state');
-      $cities =  city::where('status',1)->get()->sortBy('city');
+
       $status = (object)
-     [(object)['id' => 0,  'status' => 'Deactive',],
+      [(object)['id' => 0,  'status' => 'Deactive',],
       (object)['id' => 1,  'status' => 'Active', ],
       (object)['id' => 2,  'status' => 'Waiting Review',]];
-
-
-
-
 
         return view("admin.attendant",  compact('companies','status','rows','name','menuActive','Users','countries','regions','cities','categories'));
     }
 
 
+    public function reviewattendants()
+    {
+
+      $menuActive = array('menu'=>'c2','submenu' =>'c2-l4');
+      $name='Waiting Review';
+      $rows =  attendant::where('status',2)->get();
+      $countries =  country::where('status',1)->get()->sortBy('country');
+      $status = (object)
+      [(object)['id' => 0,  'status' => 'Deactive',],
+      (object)['id' => 1,  'status' => 'Active', ],
+      (object)['id' => 2,  'status' => 'Waiting Review',]];
+
+        return view("admin.attendant",  compact('companies','status','rows','name','menuActive','Users','countries','regions','cities','categories'));
+    }
+
+    public function rejectedattendants()
+    {
+
+      $menuActive = array('menu'=>'c2','submenu' =>'c2-l2');
+      $name="Rejected Attendants";
+      $rows =  attendant::where('status',0)->get();
+      $countries =  country::where('status',1)->get()->sortBy('country');
+      $status = (object)
+      [(object)['id' => 0,  'status' => 'Deactive',],
+      (object)['id' => 1,  'status' => 'Active', ],
+      (object)['id' => 2,  'status' => 'Waiting Review',]];
+
+      return view("admin.attendant",  compact('companies','status','rows','name','menuActive','Users','countries','regions','cities','categories'));
+    }
+
+
     public function index_company($companyID)
     {
-        $company = company::find($companyID);
+      $company = company::find($companyID);
       $menuActive = array('menu'=>'c2','submenu' =>'c2-l3');
       $name=__('general.attendants').' '. $company->company;
 
@@ -63,14 +86,9 @@ class attendantController extends Controller
       $regions =  state::where('status',1)->get()->sortBy('state');
       $cities =  city::where('status',1)->get()->sortBy('city');
       $status = (object)
-     [(object)['id' => 0,  'status' => 'Deactive',],
+      [(object)['id' => 0,  'status' => 'Deactive',],
       (object)['id' => 1,  'status' => 'Active', ],
       (object)['id' => 2,  'status' => 'Waiting Review',]];
-
-
-
-
-
         return view("admin.attendant",  compact('company','companies','status','rows','name','menuActive','Users','countries','regions','cities','categories'));
     }
 
@@ -95,7 +113,7 @@ class attendantController extends Controller
         $request->validate([
             'name' => 'required|max:255',
             'phone' => 'required|max:255',
-            'email' => 'required|unique:attendants|max:255',
+            'email' => 'required|max:255',
 
         ]);
 

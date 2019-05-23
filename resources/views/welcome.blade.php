@@ -1265,7 +1265,7 @@
 
                                                 </ul>
 																								<div class="jx-btn-center" style="margin-bottom: 1rem; margin-top: 1rem;">
-																									<a style="background-color:#444" href="standard-main.html" class="jx-btn-default"  target="_blank"><i class="line-icon icon-note"></i> Check package</a>
+																									<a style="background-color:#444" href="{{url('package/standard_main')}}" class="jx-btn-default"  target="_blank"><i class="line-icon icon-note"></i> Check package</a>
 																								</div>
                                             </div>
                                         </div>
@@ -1287,7 +1287,7 @@
 
 																							</ul>
 																								<div class="jx-btn-center" style="margin-bottom: 1rem; margin-top: 1rem;">
-																									<a  href="" class="jx-btn-default"><i class="line-icon icon-note"></i> Check package</a>
+																									<a  href="{{url('package/deluxe_main')}}" class="jx-btn-default"><i class="line-icon icon-note"></i> Check package</a>
 																								</div>
                                             </div>
                                         </div>
@@ -1323,7 +1323,7 @@
 
                                                 </ul>
 																								<div class="jx-btn-center" style="margin-bottom: 1rem; margin-top: 1rem;">
-																									<a target="_blank" style="background-color:#444" href="standard-Relax.html" class="jx-btn-default"><i class="line-icon icon-note"></i> Check package</a>
+																									<a target="_blank" style="background-color:#444" href="{{url('package/standard_relax')}}" class="jx-btn-default"><i class="line-icon icon-note"></i> Check package</a>
 																								</div>
                                             </div>
                                         </div>
@@ -1344,7 +1344,7 @@
 
 																							</ul>
 																								<div class="jx-btn-center" style="margin-bottom: 1rem; margin-top: 1rem;">
-																									<a  href="" class="jx-btn-default"><i class="line-icon icon-note"></i> Check package</a>
+																									<a  href="{{url('package/deluxe_relax')}}" class="jx-btn-default"><i class="line-icon icon-note"></i> Check package</a>
 																								</div>
                                             </div>
                                         </div>
@@ -1380,7 +1380,7 @@
 
 																								</ul>
 																								<div class="jx-btn-center" style="margin-bottom: 1rem; margin-top: 1rem;">
-																									<a style="background-color:#444" href="standard-Nile.html" class="jx-btn-default"  target="_blank"><i class="line-icon icon-note"></i> Check package</a>
+																									<a style="background-color:#444" href="{{url('package/standard_nile')}}" class="jx-btn-default"  target="_blank"><i class="line-icon icon-note"></i> Check package</a>
 																								</div>
 																						</div>
 																				</div>
@@ -1405,7 +1405,7 @@
 
 																							</ul>
 																								<div class="jx-btn-center" style="margin-bottom: 1rem; margin-top: 1rem;">
-																									<a  href="" class="jx-btn-default"><i class="line-icon icon-note"></i> Check package</a>
+																									<a  href="{{url('package/deluxe_nile')}}" class="jx-btn-default"><i class="line-icon icon-note"></i> Check package</a>
 																								</div>
 																						</div>
 																				</div>
@@ -1445,7 +1445,7 @@
 
 														                                                </ul>
 																																						<div class="jx-btn-center" style="margin-bottom: 1rem; margin-top: 1rem;">
-																																							<a style="background-color:#444" href="standard-Full.html" class="jx-btn-default"  target="_blank"><i class="line-icon icon-note"></i> Check package</a>
+																																							<a style="background-color:#444" href="{{url('package/standard_full')}}" class="jx-btn-default"  target="_blank"><i class="line-icon icon-note"></i> Check package</a>
 																																						</div>
 														                                            </div>
 														                                        </div>
@@ -1474,7 +1474,7 @@
 
 																																					</ul>
 																																						<div class="jx-btn-center" style="margin-bottom: 1rem; margin-top: 1rem;">
-																																							<a  href="" class="jx-btn-default"><i class="line-icon icon-note"></i> Check package</a>
+																																							<a  href="{{url('package/deluxe_full')}}" class="jx-btn-default"><i class="line-icon icon-note"></i> Check package</a>
 																																						</div>
 														                                            </div>
 														                                        </div>

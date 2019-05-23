@@ -18,6 +18,13 @@ class homeController extends Controller
       return view('welcome',compact('sliders'));;
   }
   /***************************************************/
+  public function packagePage($name)
+  {
+
+      $pagename = $name;
+      return view($pagename);
+  }
+  /***************************************************/
   public function inquire_now()
   {
 
@@ -31,7 +38,7 @@ class homeController extends Controller
      $request->validate([
          'name' => 'required|max:255',
          'phone' => 'required|max:255',
-         'email' => 'required|unique:attendants|max:255',
+         'email' => 'required|max:255',
 
      ]);
 
@@ -40,7 +47,7 @@ class homeController extends Controller
     'name' => $request->name,
     'phone' => $request->phone,
     'email' => $request->email,
-    'status' => $request->status,
+    'status' => 2,
     'country_id' => $request->country_id,
    ]);
 
@@ -52,13 +59,14 @@ class homeController extends Controller
 
 
      //storing parent first attendant and package.
+     $data['data']= 2;
      $data['added_by']= auth::user()->id;
      $data['attendant_id'] = $TheID =  $this->saveDB_Data('attendants',$data_firstAttandent);
      //storing package reference is attendant_id
      $this->saveDB_Data('subattendants',$data);
     //creating ticket for parent attendant
   $data_ticket =([
-     'status' => $request->status,
+     'status' => 2,
      'attendant_id' => $TheID,
   ]);
   $this->saveDB_Data('tickets',$data_ticket);

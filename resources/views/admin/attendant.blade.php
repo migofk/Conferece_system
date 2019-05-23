@@ -51,8 +51,14 @@
                   <td>{{$row->name}}</td>
                   <td>{{$row->phone}}</td>
                   <td>{{$row->email}}</td>
-                  <td>{{$row->country->country}}</td>
-                  <td>{{$row->status}}</td>
+                  <td>{{$row->country->country}} </td>
+                  <td>
+                  @foreach ($status as $statusX)
+                      @if($row->status ==$statusX->id )
+                         {{$statusX->status}}
+                      @endif
+                  @endforeach
+                  </td>
                   <td>{{$row->created_at}}</td>
                   <td>
                       @php
@@ -105,7 +111,7 @@
                     <div class="row">
                       <div class="col-lg-6" >
                       <!-- input -->
-                      <div class="form-group" style="padding:0 10px !important;">
+                  <!--    <div class="form-group" style="padding:0 10px !important;">
                         <label for="Name">How many invitations do you need? </label>
 
                         <select required name="invitations" id="invitations" class="form-control">
@@ -118,7 +124,7 @@
                             <option value="5">5</option>
 
                         </select>
-                      </div>
+                      </div>-->
                       <!-- ./input -->
                      </div>
                     </div>

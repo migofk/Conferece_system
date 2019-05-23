@@ -53,7 +53,7 @@
                   <div class="row">
                     <div class="col-lg-6" >
                     <!-- input -->
-                    <div class="form-group" style="padding:0 10px !important;">
+                  <!--  <div class="form-group" style="padding:0 10px !important;">
                       <label for="Name">How many invitations do you need? </label>
 
                       <select required name="invitations" id="invitations" class="form-control">
@@ -73,7 +73,7 @@
 
 
                       </select>
-                    </div>
+                    </div>-->
                     <!-- ./input -->
                    </div>
                   </div>

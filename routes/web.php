@@ -21,6 +21,8 @@ Route::get('/inquire_now', 'frontend\HomeController@inquire_now');
 
 Route::post('/inquire_now', 'frontend\HomeController@store');
 
+Route::get('/package/{name}', 'frontend\HomeController@packagePage');
+
 
 //company
 Route::resource('/company', 'frontend\companyController');
@@ -42,6 +44,9 @@ Route::group(['middleware' => ['role:admin']], function () {
 //attendants
 Route::resource('/adminLink/attendants', 'attendantController');
 Route::get('/adminLink/reviewattendants', 'attendantController@reviewattendants');
+Route::get('/adminLink/rejectedattendants', 'attendantController@rejectedattendants');
+
+
 //Tickets
 Route::get('/adminLink/tickets/{attendantID}', 'attendantController@get_attendant_Ticket');
 
