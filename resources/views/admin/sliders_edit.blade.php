@@ -10,10 +10,10 @@
 @section('body')
   <!--style -->
   <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="{{asset('adminCom/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+  <link rel="stylesheet" href="{{asset('public/adminCom/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   <!-- jquery time Picker -->
 
-  <link rel="stylesheet" href="{{asset('datetimepicker/jquery.datetimepicker.min.css')}}">
+  <link rel="stylesheet" href="{{asset('public/datetimepicker/jquery.datetimepicker.min.css')}}">
   <!--./style -->
 <!-- success-->
 @isset($success)
@@ -121,13 +121,13 @@
     var selectedParent ='';
     var cateID = '';
   </script>
-  <link rel="stylesheet" href="{{ asset('ezdz/jquery.ezdz.min.css') }}">
-<script src="{{ asset('ezdz/jquery.ezdz.min.js') }}"></script>
-<script src="{{ asset('js/admin/slider.js') }}"></script>
+  <link rel="stylesheet" href="{{ asset('public/ezdz/jquery.ezdz.min.css') }}">
+<script src="{{ asset('public/ezdz/jquery.ezdz.min.js') }}"></script>
+<script src="{{ asset('public/js/admin/slider.js') }}"></script>
 <!-- Bootstrap WYSIHTML5 -->
-<script src="{{asset('adminCom/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
+<script src="{{asset('public/adminCom/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js')}}"></script>
 <!-- jquery time picker -->
-<script src="{{asset('datetimepicker/jquery.datetimepicker.full.min.js')}}"></script>
+<script src="{{asset('public/datetimepicker/jquery.datetimepicker.full.min.js')}}"></script>
 
 <script>
 $(function () {

@@ -71,7 +71,7 @@ class sliderController extends Controller
         }
        /****************/
 
-       $dir= 'photos/slider-images/'.$slider->id;
+       $dir= 'public/photos/slider-images/'.$slider->id;
        if( is_dir($dir) === false )
         {
       File::makeDirectory($dir,0777);
@@ -79,7 +79,7 @@ class sliderController extends Controller
         }
 
         $thumb1 = new thumMaker();
-        $imgpath = 'photos/slider-images';
+        $imgpath = 'public/photos/slider-images';
 
        //feature
 
@@ -97,9 +97,9 @@ class sliderController extends Controller
        $success = 'Saved Successfully';
 
        $menuActive = array('menu'=>'c1','submenu' =>'c1-l14');
-       $name='عرض الصور';
+       $name=__('general.sliders');
 
-       return view('admin.sliders_add',compact('menuActive ','name','success'));
+       return view('admin.sliders_add',compact('menuActive','name','success'));
 
 
 
@@ -126,7 +126,7 @@ class sliderController extends Controller
     {
       $slider = slider::find($id);
       $menuActive = array('menu'=>'c1','submenu' =>'c1-l14');
-      $name='عرض الصور';
+      $name=__('general.sliders');
       return view('admin.sliders_edit',compact('menuActive','name','slider'));
     }
 
@@ -161,7 +161,7 @@ class sliderController extends Controller
         }
        /****************/
        if($request->hasFile('featureImage')){
-       $dir= 'photos/slider-images/'.$slider->id;
+       $dir= 'public/photos/slider-images/'.$slider->id;
        if( is_dir($dir) === false )
         {
       File::makeDirectory($dir,0777);
@@ -169,7 +169,7 @@ class sliderController extends Controller
         }
 
         $thumb1 = new thumMaker();
-        $imgpath = 'photos/slider-images';
+        $imgpath = 'public/photos/slider-images';
 
        //feature
 
@@ -195,7 +195,7 @@ class sliderController extends Controller
 
        $success = 'Updated Successfully';
        $menuActive = array('menu'=>'c1','submenu' =>'c1-l14');
-       $name='عرض الصور';
+       $name=__('general.sliders');
        return view('admin.sliders_edit',compact('menuActive','name','success','slider'));
     }
 

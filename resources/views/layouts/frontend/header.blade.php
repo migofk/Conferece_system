@@ -1,113 +1,145 @@
-@php
-  $contact= App\contact::first();
-@endphp
-<html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <title>@yield('title')</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
-        <meta name="keywords" content="coco bootstrap template, coco admin, bootstrap,admin template, bootstrap admin,">
-        <meta name="author" content="Huban Creative">
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+	<!-- Basic Page Needs
+  ================================================== -->
+	<meta charset="utf-8">
+	<title>@yield('title')</title>
+	<meta name="keywords" content="@yield('keywords')">
+		<meta name="description" content="@yield('description')">
 
-        <link href="{{asset('public/assets/frontend/assets/libs/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
-        <link href="{{asset('public/assets/frontend/assets/libs/pace/pace.css')}}" rel="stylesheet" />
-        <link href="{{asset('public/assets/frontend/assets/libs/animate-css/animate.min.css')}}" rel="stylesheet" />
-        <link href="{{asset('public/assets/frontend/assets/libs/iconmoon/style.css')}}" rel="stylesheet" />
 
-        <!-- LESS FILE <link href="assets/css/style.less" rel="stylesheet/less" type="text/css" /> -->
-                <!-- Extra CSS Libraries Start -->
-                <link href="{{asset('public/assets/frontend/assets/libs/owl-carousel/owl.carousel.css')}}" rel="stylesheet" type="text/css" />
-                <link href="{{asset('public/assets/frontend/assets/libs/owl-carousel/owl.theme.css')}}" rel="stylesheet" type="text/css" />
-                <link href="{{asset('public/assets/frontend/assets/libs/owl-carousel/owl.transitions.css')}}" rel="stylesheet" type="text/css" />
-                <link href="{{asset('public/assets/frontend/assets/libs/jquery-magnific/magnific-popup.css')}}" rel="stylesheet" type="text/css" />
-                <link href="{{asset('public/assets/frontend/assets/css/style.css')}}" rel="stylesheet" type="text/css" />
-                <!-- Extra CSS Libraries End -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- CSS
+  ================================================== -->
 
-        <link rel="shortcut icon" href="{{asset('public/images/logo.png')}}">
-        <link rel="apple-touch-icon" href="{{asset('public/assets/frontend/assets/img/apple-touch-icon.png')}}" />
-        <link rel="apple-touch-icon" sizes="57x57" href="{{asset('public/assets/frontend/assets/img/apple-touch-icon-57x57.png')}}" />
-        <link rel="apple-touch-icon" sizes="72x72" href="{{asset('public/assets/frontend/assets/img/apple-touch-icon-72x72.png')}}" />
-        <link rel="apple-touch-icon" sizes="76x76" href="{{asset('public/assets/frontend/assets/img/apple-touch-icon-76x76.png')}}" />
-        <link rel="apple-touch-icon" sizes="114x114" href="{{asset('public/assets/frontend/assets/img/apple-touch-icon-114x114.png')}}" />
-        <link rel="apple-touch-icon" sizes="120x120" href="{{asset('public/assets/frontend/assets/img/apple-touch-icon-120x120.png')}}" />
-        <link rel="apple-touch-icon" sizes="144x144" href="{{asset('public/assets/frontend/assets/img/apple-touch-icon-144x144.png')}}" />
-        <link rel="apple-touch-icon" sizes="152x152" href="{{asset('public/assets/frontend/assets/img/apple-touch-icon-152x152.png')}}" />
-    @yield('meta')
-    </head>
-<body class=""><div id="wrapper" dir="rtl">
-  <header class="inverted">
-       <div id="topbar">
-         <div class="container-fluid">
-           <div class="row" >
-             <div class="col-sm-6 col-xs-6 text-left" >
-             <span class="hidden-sm hidden-xs">
-                </span>
-               <span class="vertical-space"></span> {{$contact->phone1}}<i class="icon-phone4"></i>
-             </div>
+    <!-- Web Fonts  -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,600,500,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,500,300' rel='stylesheet' type='text/css'>
 
-             <div class="col-sm-6 col-xs-6 text-right">
-               	@guest
-               <a href="{{ route('login') }}" class="login-button">تسجيل الدخول</a>
-               <a href="{{ route('register') }}" class="signup-button">انشاء حساب</a>
-               	@else
-                  <a href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();
-    								" class="login-button">خروج</a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-    										{{ csrf_field() }}
-    								</form>
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/css/theme.css')}}">
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/css/theme-animate.css')}}">
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/css/theme-elements.css')}}">
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/css/plugins.css')}}">
 
-    						@endguest
-               <div class="btn-group social-links hidden-sm hidden-xs">
-                 <a href="{{$contact->facebook}}" class="btn btn-link"><i class="icon-facebook4"></i></a>
-                 <a href="{{$contact->twitter}}" class="btn btn-link"><i class="icon-twitter4"></i></a>
-               </div>
+    <!-- Skin CSS -->
+	<link id="skin" rel="stylesheet" href="{{asset('public/assets/nec2019/css/skins/red.css')}}">
 
-             </div>
-           </div>
-           <div class="top-divider"></div>
+    <!-- Icon Fonts -->
+    <link rel='stylesheet' href='{{asset('public/assets/nec2019/fonts/font-awesome.min.css')}}' type='text/css' media='screen' />
+
+    <!-- Library Css -->
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/css/skeleton.css')}}">
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/vendor/flexslider/flexslider.css')}}">
+
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/vendor/isotope/isotope.css')}}">
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/vendor/owl/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/vendor/prettyPhoto/prettyPhoto.css')}}">
+
+    <!-- Responsive Theme -->
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/css/theme-responsive.css')}}">
+
+    <!-- Library Js -->
+	<script src="{{asset('public/assets/nec2019/vendor/modernizr.js')}}"></script>
+
+    <!-- Google Map -->
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+    <!--putton scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+
+
+
+    <!----------------------------------------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+    <!-- Pricing Table -->
+
+    <!--[if IE]>
+        <link rel="stylesheet" href="css/ie.css')}}">
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+        <script src="vendor/respond.js')}}"></script>
+    <![endif]-->
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- Favicons
+	================================================== -->
+	<link rel="shortcut icon" href="{{asset('public/assets/nec2019/images/favicon.ico')}}">
+	<link rel="apple-touch-icon" href="{{asset('public/assets/nec2019/images/apple-touch-icon.png')}}">
+	<link rel="apple-touch-icon" sizes="72x72" href="{{asset('public/assets/nec2019/images/apple-touch-icon-72x72.png')}}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{asset('public/assets/nec2019/images/apple-touch-icon-114x114.png')}}">
+    <link rel="stylesheet" href="{{asset('public/assets/nec2019/css/custom.css')}}">
+</head>
+<body>
+	<!-- BOF Loader -->
+  <!--   <div class="loader">
+         <div class="spinner spinner-double-bounce">
+              <div class="double-bounce1"></div>
+              <div class="double-bounce2"></div>
          </div>
-        </div>
-        <nav class="navbar navbar-default" role="navigation">
-              <div class="container">
-                  <!-- Brand and toggle get grouped for better mobile display -->
-                  <div class="navbar-header">
-                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
-                          <span class="icon-navicon"></span>
-                      </button>
-                      <a class="navbar-brand" href="{{ url('/') }}">
-                          <img  src="{{asset('images/logo.png')}}" data-dark-src="{{asset('images/logo.png')}}" alt="Wib Hub" class="logo">
-                      </a>
-                  </div>
+</div>   -->
+    <!-- EOF Loader -->
 
-                  <!-- Collect the nav links, forms, and other content for toggling -->
-                  <div class="collapse navbar-collapse" id="main-navigation">
-                      <ul class="nav navbar-nav navbar-right hidden-xs ">
-                        <li><a href="{{url('/contact')}}">اتصل بنا</a></li>
-                        <li><a href="{{url('/about')}}">من نحن</a></li>
-                        @auth
-                         <li><a href="{{url('company/'.auth::user()->id)}}">شركتى</a></li>
-                        @endauth
-                        <li><a href="{{url('/')}}" class="active">الرئيسية</a></li>
-                      </ul>
 
-                      <ul class="nav navbar-nav navbar-right visible-xs">
-                        <li><a href="{{url('/')}}" class="active">الرئيسية</a></li>
-                        @auth
-                         <li><a href="{{url('company/'.auth::user()->id)}}">شركتى</a></li>
-                        @endauth
-                        <li><a href="{{url('/about')}}">من نحن</a></li>
-                        <li><a href="{{url('/contact')}}">اتصل بنا</a></li>
-                      </ul>
-                  </div>
-                  <!-- /.navbar-collapse -->
-              </div>
-              <!-- /.container-->
-          </nav>
 
-    </header>
+
+    <!-- BOF Slider -->
+    <div class="jx-slider">
+    	<div class="jx-top-black"></div>
+
+        <!-- BOF Header -->
+        <header>
+        	<div class="jx-header jx-sticky">
+            	<div class="container">
+                	<div class="sixteen columns">
+                        <div class="jx-logo left"><img  width="160" height="60" src="{{asset('public/assets/nec2019/images/logo.png')}}" alt=""></div>
+                        <div class="jx-menu right">
+                            <div id="jx-main-menu" class="main-menu">
+                                <ul>
+                                    <li class="current"><a href="{{url('/')}}">Home</a></li>
+                                    <li><a href="{{url('/#about')}}">About</a></li>
+                                    <li><a href="{{url('/#schedule')}}">Schedule</a></li>
+                                   <!-- <li><a href="index.html#speakers">Speakers</a></li>  -->
+                                    <li><a href="{{url('/#register')}}">Package</a></li>
+                                    <li><a href="{{url('/#gallery')}}">Gallery</a></li>
+                                    <li><a href="{{url('/#sponsors')}}">Sponsors</a></li>
+                                    <li><a href="{{url('/#contacts')}}">Contact Us</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- EOF columns -->
+                </div>
+            </div>
+        </header>
+        <!-- EDF Header -->
+<br>
+<br>
+<br>
+<br>
+
+<br>
+
+        <div id="home" class="jx-page-titlebar">
+
+        <!-- EOF Page Title bar -->
+
+
+
+
+    </div>
+    <!-- BOF Slider -->

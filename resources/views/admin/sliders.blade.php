@@ -77,5 +77,5 @@
 <!--/ Table -->
 @endsection
 @section('scripts')
-<script src="{{ asset('js/admin/slider.js') }}"></script>
+<script src="{{ asset('public/js/admin/slider.js') }}"></script>
 @endsection

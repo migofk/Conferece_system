@@ -14,9 +14,15 @@
 
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/home', 'HomeController@index')->name('home');
-//cpmpany
+Route::get('/', 'frontend\HomeController@index')->name('home');
+Route::get('/home', 'frontend\HomeController@index')->name('home');
+
+Route::get('/inquire_now', 'frontend\HomeController@inquire_now');
+
+Route::post('/inquire_now', 'frontend\HomeController@store');
+
+
+//company
 Route::resource('/company', 'frontend\companyController');
 Route::get('/createCompany/{id}', 'frontend\companyController@createCompany');
 //products

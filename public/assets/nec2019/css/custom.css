@@ -81,3 +81,7 @@ select{
 .form-style-1 .required{
 	color:red;
 }
+.size{
+	width:205px;
+	height: 37px;
+  }

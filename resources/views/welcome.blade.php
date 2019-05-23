@@ -133,13 +133,13 @@
         	<div class="flexslider">
             	<ul class="slides">
                     @foreach ($sliders as $slider)
-                        
-                  
-								<li class="jx-parallax-fullwidth" style=" background-image:url('{{url('public/'.$slider->featureImage)}}'); background-size:100%;background-repeat: no-repeat; background-position:center;">
-                                   
+
+
+								<li class="jx-parallax-fullwidth" style=" background-image:url('{{url($slider->featureImage)}}'); background-size:100%;background-repeat: no-repeat; background-position:center;">
+
 								</li>
                       @endforeach
-    
+
                 </ul>
                 <!-- BOF Bottom Info Bar -->
 				<div class="jx-slider-bottom-info">
@@ -1504,7 +1504,7 @@
 
            <!--VIP Form -->
 			<div class="jx-ticket-form jx-half-width ">
-				<a href="inquiry_form.html" target="_blank"> <img src="{{asset('public/assets/nec2019/images\nec-package-2.jpg')}}" alt=""></a>
+				<a href="{{url('inquire_now')}}" target="_blank"> <img src="{{asset('public/assets/nec2019/images\nec-package-2.jpg')}}" alt=""></a>
 			</div>
 			<!-- EOF Ticket Form -->
 			<!--VIP Form -->
@@ -2130,4 +2130,3 @@
 
 </body>
 </html>
-
