@@ -1,13 +1,13 @@
 @extends('layouts.adminLayout')
 @section($menuActive['menu'],'active')
 @section($menuActive['submenu'],'active')
-@section('title','Company')
+@section('title','Attendants')
 @section('meta')
 
 @endsection
 
 @section('pageHeader',$name)
-@section('headerDescription','Attendants Module')
+@section('headerDescription','Attendant Module')
 @section('body')
 
 

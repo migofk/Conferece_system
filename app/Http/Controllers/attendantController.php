@@ -14,6 +14,7 @@ use DB;
 use  Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 use auth;
+use PDF;
 class attendantController extends Controller
 {
 
@@ -150,7 +151,7 @@ class attendantController extends Controller
         }
 
 
-      return redirect(url('adminLink/attendants/'.$TheID.'/edit'));
+      return redirect(url('adminLink/attendants/'.$TheID.'/edit?success=1'));
     }
 
     /**
@@ -261,7 +262,7 @@ class attendantController extends Controller
         }
 
 
-      return redirect(url('adminLink/attendants/'.$attendant->id.'/edit'));
+      return redirect(url('adminLink/attendants/'.$attendant->id.'/edit?success=1'));
     }
 
     /**
@@ -274,10 +275,19 @@ class attendantController extends Controller
     public function get_attendant_Ticket($attendantID)
     {
 
+
        $attendant = attendant::find($attendantID);
        $menuActive = array('menu'=>'c2','submenu' =>'c2-l3');
        $name=__('general.attendants');
-     return view("admin.tickets_attendant",  compact('attendants','menuActive','name'));
+       $countTickets =count($attendant->tickets)+1;
+      $data['attendant'] = $attendant;
+      $data['countTickets'] = $countTickets;
+      $data['menuActive'] = $menuActive;
+      $data['name'] = $name;
+       $pdf = PDF::loadView('admin.pdf_tickets', $data);
+       return $pdf->stream();
+ //return $pdf->download('invoice.pdf');
+       return view("admin.tickets_attendant",  compact('attendant','countTickets','menuActive','name'));
     }
 
     public function destroy(attendant $attendant)

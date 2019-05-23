@@ -85,9 +85,9 @@ desired effect
     <!-- Logo -->
     <a href="{{url('/home')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini">W<b>HB</b></span>
+      <span class="logo-mini">N<b>EC</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">WIB<b>HUB</b></span>
+      <span class="logo-lg">NEC<b>2019</b></span>
     </a>
 
     <!-- Header Navbar -->
