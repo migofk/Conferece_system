@@ -22,7 +22,7 @@ class sliderController extends Controller
     public function index()
     {
       $menuActive = array('menu'=>'c1','submenu' =>'c1-l14');
-      $name='عرض الصور';
+      $name=__('general.sliders');
       $sliders = slider::where('lang_id',1)->orderby('created_at','desc')->get();
       return view('admin.sliders',compact('menuActive','name','sliders'));
     }
@@ -35,7 +35,7 @@ class sliderController extends Controller
     public function create()
     {
       $menuActive = array('menu'=>'c1','submenu' =>'c1-l14');
-      $name='عرض الصور';
+      $name=__('general.sliders');
       return view('admin.sliders_add',compact('menuActive','name'));
     }
 
@@ -58,7 +58,6 @@ class sliderController extends Controller
           'sort' =>0,
           'lang_id' =>1,
           'featured' =>1,
-
         ]);
 
 

@@ -57,6 +57,7 @@
         <tfoot>
         <tr>
           <th>Title</th>
+          <th>image</th>
           <th>created_at</th>
           <th>Action</th>
 
