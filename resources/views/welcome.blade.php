@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
@@ -131,68 +132,14 @@
 
         	<div class="flexslider">
             	<ul class="slides">
-								<li class="jx-parallax-fullwidth" style=" background-image:url('{{asset('public/assets/nec2019/images/sliders/test-for-font-2.jpg')}}'); background-size:100%;background-repeat: no-repeat; background-position:center;">
-
+                    @foreach ($sliders as $slider)
+                        
+                  
+								<li class="jx-parallax-fullwidth" style=" background-image:url('{{url('public/'.$slider->featureImage)}}'); background-size:100%;background-repeat: no-repeat; background-position:center;">
+                                   
 								</li>
-
-                	<li class="jx-parallax-fullwidth" style="background-image:url('{{asset('public/assets/nec2019/images/sliders/test-for-font--third-pic.jpg')}}'); background-size:100%;background-repeat: no-repeat; background-position:center;">
-
-                  <!--  	<div class="jx-event-slide">
-                            <div  class="jx-slider-content">
-                            	<div class="container">
-                                    <div  class="jx-event-box">
-                                        <div style="background:rgba(238, 22, 58, 0.4) !important;" class="jx-event-date">
-                                            <div class="jx-event-day DateBoxSlide1">19-24</div>
-                                            <div  class="jx-event-month jx-uppercase DateBoxSlide2">Oct 2019</div>
-                                        </div>
-                                        <div  class="jx-event-title-box">
-                                          <div   class="jx-event-pretitle textBoxSlide1">NEC 2019</div>
-                                            <div  class="jx-event-title textBoxSlide2">People, Planet and Progress</div>
-                                            <div  class="jx-event-location textBoxSlide1">Hurghada, Egypt</div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="jx-right-vertical-border">
-                                    <div class="jx-date">
-                                        <div class="jx-slider-day">25</div>
-                                        <div class="jx-slider-month jx-uppercase">jan</div>
-                                    </div>
-                                </div>
-
-                            </div>
-                    	</div>-->
-
-                    </li>
-                    <!--item 01 -->
-
-
-
-
-									 <li class="jx-parallax-fullwidth" style="background-image:url('{{asset('public/assets/nec2019/images/sliders/second-pic-for-red-see.jpg')}}'); background-size:100%;background-repeat: no-repeat; background-position:center;">
-
-
-									 </li>
-									 <li class="jx-parallax-fullwidth" style="background-image:url('{{asset('public/assets/nec2019/images/sliders/for-font-rodelfarg.jpg')}}'); background-size:100%;background-repeat: no-repeat; background-position:center;">
-
-
-									 </li>
-
-									 <li class="jx-parallax-fullwidth" style="background-image:url('{{asset('public/assets/nec2019/images/sliders/for-font-masged-fate7.jpg')}}'); background-size:100%;background-repeat: no-repeat; background-position:center;">
-
-
-									 </li>
-
-									 <li class="jx-parallax-fullwidth" style="background-image:url('{{asset('public/assets/nec2019/images/sliders/for-font-Cathedral.jpg')}}'); background-size:100%;background-repeat: no-repeat; background-position:center;">
-
-
-									 </li>
-
-
-                    <!--item 02 -->
-
-
+                      @endforeach
+    
                 </ul>
                 <!-- BOF Bottom Info Bar -->
 				<div class="jx-slider-bottom-info">
