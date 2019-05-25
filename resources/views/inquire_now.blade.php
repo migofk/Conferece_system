@@ -1,4 +1,14 @@
+@php
+$showSideSection =3;
+$hideSideLink = 14;
+@endphp
 @extends('layouts.frontend.layout')
+@section('title','Inquire Now')
+@section('description','Get your package now')
+@section('keywords','')
+@section('metas')
+<meta name="robots" content="noindex, nofollow " />
+@endsection
 @section('body')
   <!-- BOF Main Content -->
   <div role="main" class="main">
@@ -43,15 +53,15 @@
                                           <div class="row">
                                               <div class="three columns">
                                                   <label >Your name</label>
-                                                  <input required class="u-full-width" type="text" placeholder="Name" name="name" id="name" value="{{ old('name') }}">
+                                                  <input required class="u-full-width" type="text" placeholder="" name="name" id="name" value="{{ old('name') }}">
                                               </div>
                                               <div class="three columns">
                                                   <label >Your email</label>
-                                                  <input required class="u-full-width" type="email" placeholder="example@example.com" name="email" id="email" value="{{ old('email') }}">
+                                                  <input required class="u-full-width" type="email" placeholder="" name="email" id="email" value="{{ old('email') }}">
                                               </div>
                                               <div class="three columns">
                                                       <label >Your phone</label>
-                                                      <input required class="u-full-width" type="text" placeholder="phone number" name="phone" id="phone" value="{{ old('phone') }}">
+                                                      <input required class="u-full-width" type="text" placeholder="" name="phone" id="phone" value="{{ old('phone') }}">
 
                                               </div>
 
@@ -91,15 +101,15 @@
 
                                               <div class="three columns" style="height:92px;">
                                                       <label >Adult number</label>
-                                                      <input min="0" name="adult_number" class="u-full-width same-grade size" type="number" placeholder="Enter number"   >
+                                                      <input min="0" name="adult_number" class="u-full-width same-grade size" type="number" placeholder=""   >
                                               </div>
                                               <div class="three columns" style="height:92px;">
                                                       <label >Children number</label>
-                                                      <input min="0"  name="children_number"  class="u-full-width size" type="number" placeholder="Enter number"  >
+                                                      <input min="0"  name="children_number"  class="u-full-width size" type="number" placeholder=""  >
                                               </div>
                                               <div class="three columns" style="height:92px;">
                                                       <label >Children Age</label>
-                                                      <input min="0" name="children_age"  class="u-full-width size" type="number" placeholder="Enter number"  >
+                                                      <input min="0" name="children_age"  class="u-full-width size" type="number" placeholder=""  >
                                               </div>
                                               <div class="nine columns">
                                                       <label>Package type<span class="required">*</span></label>
@@ -146,12 +156,12 @@
 
                                               <div class="three columns">
                                                       <label >Single room</label>
-                                                      <input min="0" name="room_single" class="u-full-width size" type="text" placeholder="Enter No. of single room" id="exampleEmailInput">
+                                                      <input min="0" name="room_single" class="u-full-width size" type="number" placeholder="Enter No. of single room" id="exampleEmailInput">
                                               </div>
                                               <div class="three columns">
 
                                                       <label >Double room</label>
-                                                      <input min="0" name="room_double" class="u-full-width size" type="text" placeholder="Enter No. of double room" id="exampleEmailInput">
+                                                      <input min="0" name="room_double" class="u-full-width size" type="number" placeholder="Enter No. of double room" id="exampleEmailInput">
                                               </div>
 
                                              <!-- <div class="nine columns">
@@ -197,43 +207,18 @@
                       <div style="padding-left:2%;" id="sidebar" class="four columns right jx-padding">
 
 
-                              <!-- Widget 01 -->
+                              
 
-                              <div class="jx-sidebar-block mb40">
+                           <!-- EOF Sidebar -->
+  						            <div style="padding-left:2%;" id="sidebar" class="four columns right jx-padding">
 
-                                  <h6 class="jx-uppercase jx-weight-600 mb20">Other Packages</h6>
-                                  <!-- Heading -->
 
-                                  <div class="jx-sidebar-recentposts">
+@include('layouts.frontend.sidebar')
 
-                                      <ul>
 
-                                              <li>
-                                                  <div class="jx-post-content">
-                                                      <div class="title"><a href="standard-Relax.html"><i class="fa fa-angle-right"></i> Standard Relax Package</a></div>
 
-                                                  </div>
-                                              </li>
-                                              <li>
-                                                  <div class="jx-post-content">
-                                                      <div class="title"><a href="standard-Nile.html"><i class="fa fa-angle-right"></i> Standard Nile Package</a></div>
-
-                                                  </div>
-                                              </li>
-                                              <li>
-                                                  <div class="jx-post-content">
-                                                      <div class="title"><a href="standard-Full.html"><i class="fa fa-angle-right"></i> Standard Full Package</a></div>
-
-                                                  </div>
-                                              </li>
-
-                                          </ul>
-
-                                  </div>
-                                  <!-- Categories -->
-                              </div>
-                              <!-- Widget 02 -->
-
+   </div>
+<!-- EOF Sidebar -->
 
 
                           </div>

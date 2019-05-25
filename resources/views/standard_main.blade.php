@@ -1,4 +1,14 @@
+@php
+$showSideSection =1;
+$hideSideLink = 1;
+@endphp
 @extends('layouts.frontend.layout')
+@section('title','Standard Main Package')
+@section('description','Standard main package for NEC 2019')
+@section('keywords','')
+@section('metas')
+<meta name="robots" content="noindex, nofollow " />
+@endsection
 @section('body')
   <br>
   <br>
@@ -208,46 +218,11 @@
               </div>
               <!-- EOF Body Content -->
 
-
+                               <!-- EOF Sidebar -->
   						            <div style="padding-left:2%;" id="sidebar" class="four columns right jx-padding">
 
 
-  						                    <!-- Widget 01 -->
-
-  						                    <div class="jx-sidebar-block mb40">
-
-  						                        <h6 class="jx-uppercase jx-weight-600 mb20">Other Packages</h6>
-  						                        <!-- Heading -->
-
-  						                        <div class="jx-sidebar-recentposts">
-
-  						                            <ul>
-
-  																								<li>
-  						                                        <div class="jx-post-content">
-  						                                            <div class="title"><a href="standard-Relax.html"><i class="fa fa-angle-right"></i> Standard Relax Package</a></div>
-
-  						                                        </div>
-  						                                    </li>
-  																								<li>
-  						                                        <div class="jx-post-content">
-  						                                            <div class="title"><a href="standard-Nile.html"><i class="fa fa-angle-right"></i> Standard Nile Package</a></div>
-
-  						                                        </div>
-  						                                    </li>
-  																								<li>
-  						                                        <div class="jx-post-content">
-  						                                            <div class="title"><a href="standard-Full.html"><i class="fa fa-angle-right"></i> Standard Full Package</a></div>
-
-  						                                        </div>
-  						                                    </li>
-
-  						                                </ul>
-
-  						                        </div>
-  						                        <!-- Categories -->
-  						                    </div>
-  						                    <!-- Widget 02 -->
+  						             @include('layouts.frontend.sidebar')
 
 
 

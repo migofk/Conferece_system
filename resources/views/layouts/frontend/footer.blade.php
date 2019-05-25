@@ -16,7 +16,7 @@
                 </div>
 
                 <div class="jx-footer-copyright ">
-                        Copyrights &copy; 2019 - Design by <a class="de-color" href="https://www.digitalexperts.ae/">Digital Experts</a>
+                        Copyrights &copy; 2019 - Powered by <a class="de-color" style="color:white" href="https://www.digitalexperts.ae/">Digital Experts</a>
                     </div>
             </div>
         </div>

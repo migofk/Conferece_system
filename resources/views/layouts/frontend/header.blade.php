@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<title>@yield('title')</title>
 	<meta name="keywords" content="@yield('keywords')">
-		<meta name="description" content="@yield('description')">
+	<meta name="description" content="@yield('description')">
 
 
     <!-- Mobile Specific Metas
@@ -77,11 +77,12 @@
 	<![endif]-->
 	<!-- Favicons
 	================================================== -->
-	<link rel="shortcut icon" href="{{asset('public/assets/nec2019/images/favicon.ico')}}">
+	<link rel="shortcut icon" href="{{asset('public/assets/nec2019/images/logo_450.png')}}">
 	<link rel="apple-touch-icon" href="{{asset('public/assets/nec2019/images/apple-touch-icon.png')}}">
 	<link rel="apple-touch-icon" sizes="72x72" href="{{asset('public/assets/nec2019/images/apple-touch-icon-72x72.png')}}">
     <link rel="apple-touch-icon" sizes="114x114" href="{{asset('public/assets/nec2019/images/apple-touch-icon-114x114.png')}}">
     <link rel="stylesheet" href="{{asset('public/assets/nec2019/css/custom.css')}}">
+    @yield('metas')
 </head>
 <body>
 	<!-- BOF Loader -->

@@ -1,4 +1,14 @@
+@php
+$showSideSection =1;
+$hideSideLink = 4;
+@endphp
 @extends('layouts.frontend.layout')
+@section('title','Standard Full Package')
+@section('description','Standard full package for NEC 2019')
+@section('keywords','')
+@section('metas')
+<meta name="robots" content="noindex, nofollow " />
+@endsection
 @section('body')
   <br>
   <br>
@@ -310,41 +320,16 @@
               <div style="padding-left:2%;" id="sidebar" class="four columns right jx-padding">
 
 
-                      <!-- Widget 01 -->
+                           <!-- EOF Sidebar -->
+  						            <div style="padding-left:2%;" id="sidebar" class="four columns right jx-padding">
 
-                      <div class="jx-sidebar-block mb40">
 
-                          <h6 class="jx-uppercase jx-weight-600 mb20">Other Packages</h6>
-                          <!-- Heading -->
+@include('layouts.frontend.sidebar')
 
-                          <div class="jx-sidebar-recentposts">
 
-                              <ul>
-                                      <li>
-                                          <div class="jx-post-content">
-                                              <div class="title"><a href="standard-main.html"><i class="fa fa-angle-right"></i> Standard Main Package</a></div>
 
-                                          </div>
-                                      </li>
-  																		<li>
-                                          <div class="jx-post-content">
-                                              <div class="title"><a href="standard-Relax.html"><i class="fa fa-angle-right"></i> Standard Relax Package</a></div>
-
-                                          </div>
-                                      </li>
-  																		<li>
-                                          <div class="jx-post-content">
-                                              <div class="title"><a href="standard-Nile.html"><i class="fa fa-angle-right"></i> Standard Nile Package</a></div>
-
-                                          </div>
-                                      </li>
-
-                                  </ul>
-
-                          </div>
-                          <!-- Categories -->
-                      </div>
-                      <!-- Widget 02 -->
+   </div>
+<!-- EOF Sidebar -->
 
 
 

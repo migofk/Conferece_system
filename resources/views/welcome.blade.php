@@ -2009,7 +2009,7 @@
                                     </ul>
             </div>
             <div class="jx-footer-copyright">
-                Copyrights &copy; 2019 - Designed by <a href="">Digital Experts</a>
+                Copyrights &copy; 2019 - Powered by <a href="">Digital Experts</a>
             </div>
         </div>
         </div>
