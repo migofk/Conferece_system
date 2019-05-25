@@ -257,7 +257,7 @@
 
                             <div class="jx-counter-info">
                                 <div class="jx-counter-text">Visitors</div>
-                                <div class="jx-counter-number jx-counter-up">000</div>
+                                <div class="jx-counter-number jx-counter-up">{{$views}}</div>
                             </div>
                             <!-- Counter info -->
                         </div>

@@ -29,9 +29,9 @@ $permission->assignRole($role);*/
         <!-- small box -->
         <div class="small-box bg-blue">
           <div class="inner">
-            <h3>1</h3>
+            <h3>{{App\attendant::where('status',2)->count()}}</h3>
 
-            <p>title</p>
+            <p>Waiting Review</p>
           </div>
           <div class="icon">
             <i class="fa fa-bell-o"></i>
@@ -44,9 +44,9 @@ $permission->assignRole($role);*/
         <!-- small box -->
         <div class="small-box bg-yellow">
           <div class="inner">
-            <h3>1</h3>
+            <h3>{{App\attendant::where('status',1)->count()}}</h3>
 
-            <p>title</p>
+            <p>Active Attendants</p>
           </div>
           <div class="icon">
             <i class="fa  fa-leaf"></i>
@@ -54,29 +54,15 @@ $permission->assignRole($role);*/
 
         </div>
       </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-green">
-          <div class="inner">
-            <h3>1</h3>
 
-            <p>title</p>
-          </div>
-          <div class="icon">
-            <i class="fa fa-arrow-circle-up"></i>
-          </div>
-
-        </div>
-      </div>
       <!-- ./col -->
       <div class="col-lg-3 col-xs-6">
         <!-- small box -->
         <div class="small-box bg-red">
           <div class="inner">
-            <h3>1</h3>
+            <h3>{{App\attendant::where('status',0)->count()}}</h3>
 
-            <p>title</p>
+            <p>Rejected Attendants</p>
           </div>
           <div class="icon">
             <i class="fa  fa-arrow-circle-down"></i>
@@ -89,9 +75,15 @@ $permission->assignRole($role);*/
         <!-- small box -->
         <div class="small-box bg-maroon">
           <div class="inner">
-            <h3>1</h3>
+            @php
+              $views = DB::table('views')->get();
+              foreach ($views as $value) {
+                $views = $value->views;
+              }
+            @endphp
+            <h3>{{$views}}</h3>
 
-            <p>title</p>
+            <p>Visitors</p>
           </div>
           <div class="icon">
             <i class="fa  fa-handshake-o"></i>
@@ -99,22 +91,7 @@ $permission->assignRole($role);*/
 
         </div>
       </div>
-      <!-- ./col -->
-      <div class="col-lg-3 col-xs-6">
-        <!-- small box -->
-        <div class="small-box bg-teal">
-          <div class="inner">
-            <h3>1</h3>
-
-            <p>title</p>
-          </div>
-          <div class="icon">
-            <i class="fa  fa-money"></i>
-          </div>
-
-        </div>
-      </div>
-      <!-- ./col -->
+      
     </div>
     <!-- /.row -->
     <!-- Main row -->

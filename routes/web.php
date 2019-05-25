@@ -24,19 +24,7 @@ Route::post('/inquire_now', 'frontend\HomeController@store');
 Route::get('/package/{name}', 'frontend\HomeController@packagePage');
 
 
-//company
-Route::resource('/company', 'frontend\companyController');
-Route::get('/createCompany/{id}', 'frontend\companyController@createCompany');
-//products
-Route::resource('/products', 'frontend\productController');
-Route::get('/createProduct/{companyID}', 'frontend\productController@createProduct');
-//event
-Route::resource('/events', 'frontend\eventController');
-Route::get('createEvent/{companyID}', 'frontend\eventController@createEvent');
-//about
-Route::get('/about', 'HomeController@aboutUs');
-//contact
-Route::get('/contact', 'HomeController@contactUs');
+
 
 ////// admin routes/////
 Route::group(['middleware' => ['role:admin']], function () {

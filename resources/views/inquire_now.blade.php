@@ -8,6 +8,15 @@ $hideSideLink = 14;
 @section('keywords','')
 @section('metas')
 <meta name="robots" content="noindex, nofollow " />
+<script src="https://www.google.com/recaptcha/api.js?render=6Ldnb6UUAAAAAM8ltbueTAFx860wv7QHufroYuOO"></script>
+<script>
+        grecaptcha.ready(function () {
+            grecaptcha.execute('6Ldnb6UUAAAAAM8ltbueTAFx860wv7QHufroYuOO', { action: 'contact' }).then(function (token) {
+                var recaptchaResponse = document.getElementById('recaptchaResponse');
+                recaptchaResponse.value = token;
+            });
+        });
+    </script>
 @endsection
 @section('body')
   <!-- BOF Main Content -->
@@ -79,6 +88,7 @@ $hideSideLink = 14;
                                               <div class="three columns" style="height:92px;">
                                                           <label>Your country</label>
                                                           <select name="country_id" required class="u-full-width size" id="exampleRecipientInput">
+                                                                 <option></option>
                                                                  @foreach ($countries as $country)
                                                                   <option value="{{$country->id}}">{{$country->country}}</option>
                                                                     @endforeach
@@ -177,9 +187,10 @@ $hideSideLink = 14;
                                               </div>
                                               <label for="exampleMessage">Flight detalis</label>
                                               <textarea name="flight_details" class="u-full-width" placeholder="about your flight" ></textarea><br><br>
-                                              <label for="exampleMessage">comments</label>
+                                              <label for="exampleMessage">Comments</label>
                                               <textarea  name="comment" class="u-full-width" placeholder="…" id="exampleMessage"></textarea><br><br>
 
+                        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                                               <input  class="button-primary" type="submit" value="Submit">
 
                                           </form>
@@ -207,7 +218,7 @@ $hideSideLink = 14;
                       <div style="padding-left:2%;" id="sidebar" class="four columns right jx-padding">
 
 
-                              
+
 
                            <!-- EOF Sidebar -->
   						            <div style="padding-left:2%;" id="sidebar" class="four columns right jx-padding">
