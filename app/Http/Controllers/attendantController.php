@@ -195,7 +195,7 @@ class attendantController extends Controller
       $menuActive = array('menu'=>'c2','submenu' =>'c2-l1');
       $name= "Edit Attendants";
       $attendants=  attendant::where('parent_id',$attendant->id)->get()->sortBy('name');
-      $countries =  country::where('status',1)->get()->sortBy('country');
+      $countries =  country::all();
       $status = (object)
      [(object)['id' => 0,  'status' => 'Deactive',],
       (object)['id' => 1,  'status' => 'Active', ],
